@@ -163,7 +163,7 @@ export default function ComingSoon() {
             </HStack>
           </Link>
           <Link
-            href="https://instagram.com/loverebeccagrace"
+            href="https://instagram.com/coderwhoclothes"
             bg="pink.500"
             color="white"
             py={2}
