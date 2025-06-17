@@ -208,7 +208,8 @@ export default function ComingSoon() {
         fontSize="sm"
       >
         <Text>
-          Contact: <Link href="mailto:hello@coderwhoclothes.com" textDecoration="underline" _hover={{ color: "pink.500" }}>hello@coderwhoclothes.com</Link>
+          Contact: <Link href="mailto:hello@coderwhoclothes.com" textDecoration="underline" _hover={{ color: "pink.500" }}>hello@coderwhoclothes.com</Link> ·
+          <Link href="https://www.coderwhoclothes.com/privacy_policy.html" textDecoration="underline" _hover={{ color: "pink.500" }}>Privacy Policy</Link>
         </Text>
         <Text mt={2}>© 2025 CoderWhoClothes. All Rights Reserved.</Text>
       </Box>
