@@ -68,147 +68,192 @@ export default function ComingSoon() {
     <Box
       bg={BG}
       minH="100vh"
-      py={{ base: 12, md: 16 }}
-      px={4}
+      py={{ base: 14, md: 20 }}
+      px={{ base: 5, md: 8 }}
       display="flex"
       flexDirection="column"
-      alignItems="center"
+      alignItems="flex-start"
     >
-      <Box maxW="720px" w="100%" as="main">
-        <VStack align="center" spacing={{ base: 8, md: 12 }}>
-          {/* 1. Large heading */}
-          <Heading
-            as="h1"
-            color={TEXT}
-            fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
-            fontWeight="bold"
-            lineHeight="1.1"
-          >
-            Rebecca Gerber
-          </Heading>
+      <Box maxW="720px" w="100%" as="main" textAlign="left">
+        {/* 1. Large heading */}
+        <Heading
+          as="h1"
+          color={TEXT}
+          fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
+          fontWeight="bold"
+          letterSpacing="-0.02em"
+          lineHeight="1.05"
+          mb={{ base: 3, md: 4 }}
+        >
+          Rebecca Gerber
+        </Heading>
 
-          {/* 2. Subheading */}
-          <Text color={TEXT} fontSize={{ base: "lg", md: "xl" }} fontWeight="medium">
-            Software engineer. Fashion thinker.
-          </Text>
+        {/* 2. Subheading */}
+        <Text
+          color={TEXT}
+          fontSize={{ base: "md", md: "lg" }}
+          fontWeight="medium"
+          opacity={0.9}
+          mb={{ base: 10, md: 14 }}
+        >
+          Software engineer. Fashion thinker.
+        </Text>
 
-          {/* 3. Serif philosophy */}
+        {/* 3. Serif philosophy */}
+        <Text
+          color={TEXT}
+          fontFamily="Georgia, 'Times New Roman', serif"
+          fontSize={{ base: "xl", md: "2xl" }}
+          fontStyle="italic"
+          letterSpacing="0.01em"
+          lineHeight="1.5"
+          mb={{ base: 14, md: 20 }}
+        >
+          Style is cultivated. Attention refines it.
+        </Text>
+
+        {/* 4. Hero image */}
+        <Box
+          as="img"
+          src="/hero.jpg"
+          alt=""
+          w="100%"
+          maxH="520px"
+          objectFit="cover"
+          display="block"
+          my={{ base: 2, md: 0 }}
+          mb={{ base: 16, md: 24 }}
+        />
+
+        {/* 5. Email signup card */}
+        <Box
+          border="1px solid"
+          borderColor={BORDER}
+          bg="#FCFBF8"
+          p={{ base: 8, md: 12 }}
+          mb={{ base: 20, md: 28 }}
+        >
           <Text
             color={TEXT}
-            fontFamily="Georgia, serif"
-            fontSize={{ base: "xl", md: "2xl" }}
-            lineHeight="1.4"
+            fontSize="md"
+            mb={6}
+            opacity={0.9}
           >
-            Style is cultivated. Attention refines it.
+            Building something new. Join early access.
           </Text>
+          <form onSubmit={handleSubmit}>
+            {!emailSubmitted ? (
+              <VStack align="stretch" spacing={4} maxW="320px">
+                <Input
+                  placeholder="Enter your email"
+                  size="md"
+                  borderColor={BORDER}
+                  _focus={{ borderColor: TEXT, boxShadow: "none" }}
+                  color={TEXT}
+                />
+                <Button
+                  type="submit"
+                  variant="outline"
+                  borderColor={TEXT}
+                  color={TEXT}
+                  _hover={{ bg: "transparent", borderColor: TEXT, color: TEXT }}
+                  size="md"
+                >
+                  Join Early Access
+                </Button>
+              </VStack>
+            ) : (
+              <Text color={TEXT} fontWeight="medium">
+                You're in.
+              </Text>
+            )}
+          </form>
+        </Box>
 
-          {/* 4. Hero image */}
-          <Box
-            as="img"
-            src="/hero.jpg"
-            alt=""
-            w="100%"
-            h={{ base: "420px", md: "520px" }}
-            objectFit="cover"
-            display="block"
-          />
-
-          {/* 5. Email signup card */}
-          <Box
-            border="1px solid"
-            borderColor={BORDER}
-            bg="white"
-            p={{ base: 8, md: 10 }}
+        {/* 6. Find Me section */}
+        <Box>
+          <Text
+            color={TEXT}
+            fontSize="xs"
+            fontWeight="semibold"
+            textTransform="uppercase"
+            letterSpacing="0.2em"
+            mb={{ base: 6, md: 8 }}
           >
-            <Text
-              color={TEXT}
-              fontSize="lg"
-              mb={6}
-            >
-              Building something new. Join early access.
-            </Text>
-            <form onSubmit={handleSubmit}>
-              {!emailSubmitted ? (
-                <VStack align="stretch" spacing={5}>
-                  <Input
-                    placeholder="Enter your email"
-                    size="md"
-                    borderColor={BORDER}
-                    _focus={{ borderColor: TEXT, boxShadow: "none" }}
-                    color={TEXT}
-                  />
-                  <Button
-                    type="submit"
-                    variant="outline"
-                    borderColor={TEXT}
-                    color={TEXT}
-                    _hover={{ bg: "white", borderColor: TEXT, color: TEXT }}
-                    size="md"
-                  >
-                    Join Early Access
-                  </Button>
-                </VStack>
-              ) : (
-                <Text color={TEXT} fontWeight="medium">
-                  You're in.
-                </Text>
-              )}
-            </form>
-          </Box>
+            Find Me
+          </Text>
+          <VStack align="stretch" spacing={{ base: 5, md: 6 }}>
+              <Link
+                href="https://www.tiktok.com/@rebeccaagerber"
+                fontSize="md"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
+              >
+                TikTok — Personal
+              </Link>
 
-          {/* 6. Find Me section */}
-          <Box pt={{ base: 8, md: 12 }}>
-            <Text
-              color={TEXT}
-              fontSize="sm"
-              fontWeight="semibold"
-              textTransform="uppercase"
-              letterSpacing="wider"
-              mb={6}
-            >
-              Find Me
-            </Text>
-            <VStack align="stretch" spacing={5}>
               <Link
-                href="https://shopmy.us/coderwhoclothes"
+                href="https://www.tiktok.com/@coderwhoclothess"
+                fontSize="md"
                 color={TEXT}
-                textDecoration="underline"
-                _hover={{ color: TEXT, textDecoration: "underline" }}
-                fontSize="lg"
-                opacity={0.7}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
               >
-                Shop My Closet
+                TikTok — Style
               </Link>
-              <Link
-                href="https://pin.it/5pzSdeDdZ"
-                color={TEXT}
-                textDecoration="underline"
-                _hover={{ color: TEXT, textDecoration: "underline" }}
-                fontSize="lg"
-              >
-                Get Inspo
-              </Link>
+
               <Link
                 href="https://instagram.com/coderwhoclothes"
+                fontSize="md"
                 color={TEXT}
-                textDecoration="underline"
-                _hover={{ color: TEXT, textDecoration: "underline" }}
-                fontSize="lg"
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
               >
                 Instagram
               </Link>
+
               <Link
-                href="https://www.tiktok.com/@rebeccaagerber?_t=ZP-8tdp0clroQ3&_r=1"
+                href="https://pin.it/5pzSdeDdZ"
+                fontSize="md"
                 color={TEXT}
-                textDecoration="underline"
-                _hover={{ color: TEXT, textDecoration: "underline" }}
-                fontSize="lg"
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
               >
-                TikTok
+                Pinterest
+              </Link>
+
+              <Link
+                href="https://depop.com/reb77"
+                fontSize="md"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
+              >
+                Depop
+              </Link>
+
+              <Link
+                href="https://shopmy.us/coderwhoclothes"
+                fontSize="md"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
+              >
+                ShopMy
+              </Link>
+
+              <Link
+                href="https://rvlv.me/yw6slx?navsrc=share_mylists"
+                fontSize="md"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
+              >
+                Revolve
               </Link>
             </VStack>
           </Box>
-        </VStack>
       </Box>
 
       {/* Footer */}
@@ -216,12 +261,13 @@ export default function ComingSoon() {
         as="footer"
         maxW="720px"
         w="100%"
-        mt={{ base: 16, md: 20 }}
-        pt={8}
+        mt={{ base: 24, md: 32 }}
+        pt={{ base: 8, md: 10 }}
         borderTop="1px solid"
         borderColor={BORDER}
         color={TEXT}
         fontSize="sm"
+        textAlign="left"
       >
         <Text>
           Contact:{" "}
