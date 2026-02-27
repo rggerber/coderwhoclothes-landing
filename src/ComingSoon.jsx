@@ -118,7 +118,7 @@ export default function ComingSoon() {
           src="/hero.jpg"
           alt=""
           w="100%"
-          maxH={{ base: "360px", md: "520px" }}
+          maxH={{ base: "350px", md: "520px" }}
           objectFit="cover"
           display="block"
           my={{ base: 2, md: 0 }}
