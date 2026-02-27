@@ -185,26 +185,29 @@ export default function ComingSoon() {
           <VStack align="stretch" spacing={{ base: 5, md: 6 }}>
               <Link
                 href="https://www.tiktok.com/@rebeccaagerber"
+                isExternal
                 fontSize="md"
                 color={TEXT}
                 textDecoration="none"
                 _hover={{ textDecoration: "underline" }}
               >
-                TikTok — Personal
+                TikTok
               </Link>
 
               <Link
                 href="https://www.tiktok.com/@coderwhoclothess"
+                isExternal
                 fontSize="md"
                 color={TEXT}
                 textDecoration="none"
                 _hover={{ textDecoration: "underline" }}
               >
-                TikTok — Style
+                Style TikTok
               </Link>
 
               <Link
                 href="https://instagram.com/coderwhoclothes"
+                isExternal
                 fontSize="md"
                 color={TEXT}
                 textDecoration="none"
@@ -215,6 +218,7 @@ export default function ComingSoon() {
 
               <Link
                 href="https://pin.it/5pzSdeDdZ"
+                isExternal
                 fontSize="md"
                 color={TEXT}
                 textDecoration="none"
@@ -225,6 +229,7 @@ export default function ComingSoon() {
 
               <Link
                 href="https://depop.com/reb77"
+                isExternal
                 fontSize="md"
                 color={TEXT}
                 textDecoration="none"
@@ -235,6 +240,7 @@ export default function ComingSoon() {
 
               <Link
                 href="https://shopmy.us/coderwhoclothes"
+                isExternal
                 fontSize="md"
                 color={TEXT}
                 textDecoration="none"
@@ -245,6 +251,7 @@ export default function ComingSoon() {
 
               <Link
                 href="https://rvlv.me/yw6slx?navsrc=share_mylists"
+                isExternal
                 fontSize="md"
                 color={TEXT}
                 textDecoration="none"
