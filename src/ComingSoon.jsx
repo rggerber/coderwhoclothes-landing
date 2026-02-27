@@ -6,11 +6,13 @@ import {
   Input,
   Button,
   VStack,
-  HStack,
   Link,
   useToast,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTiktok, FaPinterest, FaShoppingBag } from "react-icons/fa";
+
+const BG = "#F4EFE8";
+const TEXT = "#2C201C";
+const BORDER = "#EAE4DA";
 
 export default function ComingSoon() {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
@@ -64,154 +66,184 @@ export default function ComingSoon() {
 
   return (
     <Box
-      bg="pink.100"
+      bg={BG}
       minH="100vh"
+      py={{ base: 12, md: 16 }}
+      px={4}
       display="flex"
       flexDirection="column"
       alignItems="center"
-      justifyContent="center"
-      px={4}
     >
-      {/* Main Content */}
-      <Box
-        bg="transparent"
-        p={{ base: 6, md: 8 }}
-        borderRadius="2xl"
-        shadow="lg"
-        textAlign="center"
-        maxWidth={{ base: "90%", md: "500px" }}
-        width="100%"
-      >
-        <Heading
-        color="pink.800"
-        fontSize={{ base: "3xl", md: "4xl" }}
-        mb={4}
-        fontWeight="extrabold"
-        textAlign="center"
-        whiteSpace="normal"
-        >
-          CoderWhoClothes Coming Soon
-        </Heading>
-        <Text color="pink.700" fontSize="lg" mb={6}>
-          Sign up to be the first to know when we're live.
-        </Text>
-        <form onSubmit={handleSubmit}>
-          {!emailSubmitted ? (
-            <VStack spacing={4}>
-              <Input
-                placeholder="Enter your email"
-                size="lg"
-                borderColor="pink.400"
-                focusBorderColor="pink.500"
-                bg="white"
-              />
-              <Button
-                type="submit"
-                bg="pink.600"
-                color="white"
-                _hover={{ bg: "pink.700" }}
-                size="lg"
-              >
-                Notify Me
-              </Button>
-            </VStack>
-          ) : (
-            <Text color="pink.600" fontWeight="medium">
-              You're in. I can't wait to share my new project with you!
-            </Text>
-          )}
-        </form>
-        <Heading color="pink.700" fontSize="2xl" mt={8} fontWeight="bold">
-          Love, Rebecca Grace
-        </Heading>
-      </Box>
+      <Box maxW="720px" w="100%" as="main">
+        <VStack align="center" spacing={{ base: 8, md: 12 }}>
+          {/* 1. Large heading */}
+          <Heading
+            as="h1"
+            color={TEXT}
+            fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
+            fontWeight="bold"
+            lineHeight="1.1"
+          >
+            Rebecca Gerber
+          </Heading>
 
-      {/* Links Section */}
-      <Box mt={10} textAlign="center">
-        <Heading color="pink.700" fontSize="xl" mb={4}>
-          For Now...
-        </Heading>
-        <HStack spacing={4} justify="center" wrap="wrap" py={2}>
-          <Link
-            href="https://shopmy.us/rebeccagrace"
-            bg="pink.500"
-            color="white"
-            py={2}
-            px={4}
-            borderRadius="full"
-            _hover={{ bg: "pink.600" }}
-            textAlign="center"
+          {/* 2. Subheading */}
+          <Text color={TEXT} fontSize={{ base: "lg", md: "xl" }} fontWeight="medium">
+            Software engineer. Fashion thinker.
+          </Text>
+
+          {/* 3. Serif philosophy */}
+          <Text
+            color={TEXT}
+            fontFamily="Georgia, serif"
+            fontSize={{ base: "xl", md: "2xl" }}
+            lineHeight="1.4"
           >
-            <HStack>
-              <FaShoppingBag />
-              <Text>Shop My Closet</Text>
-            </HStack>
-          </Link>
-          <Link
-            href="https://pin.it/5pzSdeDdZ"
-            bg="pink.500"
-            color="white"
-            py={2}
-            px={4}
-            borderRadius="full"
-            _hover={{ bg: "pink.600" }}
-            textAlign="center"
+            Style is cultivated. Attention refines it.
+          </Text>
+
+          {/* 4. Hero image */}
+          <Box
+            as="img"
+            src="/hero.jpg"
+            alt=""
+            w="100%"
+            h={{ base: "420px", md: "520px" }}
+            objectFit="cover"
+            display="block"
+          />
+
+          {/* 5. Email signup card */}
+          <Box
+            border="1px solid"
+            borderColor={BORDER}
+            bg="white"
+            p={{ base: 8, md: 10 }}
           >
-            <HStack>
-              <FaPinterest />
-              <Text>Get Inspo</Text>
-            </HStack>
-          </Link>
-          <Link
-            href="https://instagram.com/coderwhoclothes"
-            bg="pink.500"
-            color="white"
-            py={2}
-            px={4}
-            borderRadius="full"
-            _hover={{ bg: "pink.600" }}
-            textAlign="center"
-          >
-            <HStack>
-              <FaInstagram />
-              <Text>Instagram</Text>
-            </HStack>
-          </Link>
-          <Link
-            href="https://www.tiktok.com/@rebeccaagerber?_t=ZP-8tdp0clroQ3&_r=1"
-            bg="pink.500"
-            color="white"
-            py={2}
-            px={4}
-            borderRadius="full"
-            _hover={{ bg: "pink.600" }}
-            textAlign="center"
-          >
-            <HStack>
-              <FaTiktok />
-              <Text>TikTok</Text>
-            </HStack>
-          </Link>
-        </HStack>
+            <Text
+              color={TEXT}
+              fontSize="lg"
+              mb={6}
+            >
+              Building something new. Join early access.
+            </Text>
+            <form onSubmit={handleSubmit}>
+              {!emailSubmitted ? (
+                <VStack align="stretch" spacing={5}>
+                  <Input
+                    placeholder="Enter your email"
+                    size="md"
+                    borderColor={BORDER}
+                    _focus={{ borderColor: TEXT, boxShadow: "none" }}
+                    color={TEXT}
+                  />
+                  <Button
+                    type="submit"
+                    variant="outline"
+                    borderColor={TEXT}
+                    color={TEXT}
+                    _hover={{ bg: "white", borderColor: TEXT, color: TEXT }}
+                    size="md"
+                  >
+                    Join Early Access
+                  </Button>
+                </VStack>
+              ) : (
+                <Text color={TEXT} fontWeight="medium">
+                  You're in.
+                </Text>
+              )}
+            </form>
+          </Box>
+
+          {/* 6. Find Me section */}
+          <Box pt={{ base: 8, md: 12 }}>
+            <Text
+              color={TEXT}
+              fontSize="sm"
+              fontWeight="semibold"
+              textTransform="uppercase"
+              letterSpacing="wider"
+              mb={6}
+            >
+              Find Me
+            </Text>
+            <VStack align="stretch" spacing={5}>
+              <Link
+                href="https://shopmy.us/coderwhoclothes"
+                color={TEXT}
+                textDecoration="underline"
+                _hover={{ color: TEXT, textDecoration: "underline" }}
+                fontSize="lg"
+                opacity={0.7}
+              >
+                Shop My Closet
+              </Link>
+              <Link
+                href="https://pin.it/5pzSdeDdZ"
+                color={TEXT}
+                textDecoration="underline"
+                _hover={{ color: TEXT, textDecoration: "underline" }}
+                fontSize="lg"
+              >
+                Get Inspo
+              </Link>
+              <Link
+                href="https://instagram.com/coderwhoclothes"
+                color={TEXT}
+                textDecoration="underline"
+                _hover={{ color: TEXT, textDecoration: "underline" }}
+                fontSize="lg"
+              >
+                Instagram
+              </Link>
+              <Link
+                href="https://www.tiktok.com/@rebeccaagerber?_t=ZP-8tdp0clroQ3&_r=1"
+                color={TEXT}
+                textDecoration="underline"
+                _hover={{ color: TEXT, textDecoration: "underline" }}
+                fontSize="lg"
+              >
+                TikTok
+              </Link>
+            </VStack>
+          </Box>
+        </VStack>
       </Box>
 
       {/* Footer */}
       <Box
         as="footer"
-        mt={6}
-        textAlign="center"
+        maxW="720px"
+        w="100%"
+        mt={{ base: 16, md: 20 }}
+        pt={8}
         borderTop="1px solid"
-        borderColor="pink.300"
-        pt={4}
-        px={2}
-        color="pink.600"
+        borderColor={BORDER}
+        color={TEXT}
         fontSize="sm"
       >
         <Text>
-          Contact: <Link href="mailto:hello@coderwhoclothes.com" textDecoration="underline" _hover={{ color: "pink.500" }}>hello@coderwhoclothes.com</Link> ·
-          <Link href="https://www.coderwhoclothes.com/privacy_policy.html" textDecoration="underline" _hover={{ color: "pink.500" }}>Privacy Policy</Link>
+          Contact:{" "}
+          <Link
+            href="mailto:hello@coderwhoclothes.com"
+            textDecoration="underline"
+            _hover={{ color: TEXT }}
+          >
+            hello@coderwhoclothes.com
+          </Link>
+          {" · "}
+          <Link
+            href="https://www.coderwhoclothes.com/privacy_policy.html"
+            textDecoration="underline"
+            _hover={{ color: TEXT }}
+          >
+            Privacy Policy
+          </Link>
         </Text>
-        <Text mt={2}>© 2025 CoderWhoClothes. All Rights Reserved.</Text>
+        <Text mt={3}>
+          © {new Date().getFullYear()} CoderWhoClothes. All Rights Reserved.
+        </Text>
       </Box>
     </Box>
   );
