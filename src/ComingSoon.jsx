@@ -75,7 +75,7 @@ export default function ComingSoon() {
       alignItems="center"
     >
       <Box maxW="720px" w="100%" as="main">
-        <VStack align="center" spacing={{ base: 8, md: 12 }}>
+        <VStack align="stretch" spacing={{ base: 10, md: 16 }}>
           {/* 1. Large heading */}
           <Heading
             as="h1"
@@ -95,7 +95,7 @@ export default function ComingSoon() {
           {/* 3. Serif philosophy */}
           <Text
             color={TEXT}
-            fontFamily="Georgia, serif"
+            fontFamily="'Times New Roman', serif"
             fontSize={{ base: "xl", md: "2xl" }}
             lineHeight="1.4"
           >
@@ -108,7 +108,7 @@ export default function ComingSoon() {
             src="/hero.jpg"
             alt=""
             w="100%"
-            h={{ base: "420px", md: "520px" }}
+            maxH="520px"
             objectFit="cover"
             display="block"
           />
@@ -117,7 +117,7 @@ export default function ComingSoon() {
           <Box
             border="1px solid"
             borderColor={BORDER}
-            bg="white"
+            bg="#FCFBF8"
             p={{ base: 8, md: 10 }}
           >
             <Text
@@ -170,41 +170,73 @@ export default function ComingSoon() {
             </Text>
             <VStack align="stretch" spacing={5}>
               <Link
-                href="https://shopmy.us/coderwhoclothes"
-                color={TEXT}
-                textDecoration="underline"
-                _hover={{ color: TEXT, textDecoration: "underline" }}
+                href="https://www.tiktok.com/@rebeccaagerber"
                 fontSize="lg"
-                opacity={0.7}
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
               >
-                Shop My Closet
+                TikTok — Personal
               </Link>
+
               <Link
-                href="https://pin.it/5pzSdeDdZ"
-                color={TEXT}
-                textDecoration="underline"
-                _hover={{ color: TEXT, textDecoration: "underline" }}
+                href="https://www.tiktok.com/@coderwhoclothess"
                 fontSize="lg"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
               >
-                Get Inspo
+                TikTok — Style
               </Link>
+
               <Link
                 href="https://instagram.com/coderwhoclothes"
-                color={TEXT}
-                textDecoration="underline"
-                _hover={{ color: TEXT, textDecoration: "underline" }}
                 fontSize="lg"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
               >
                 Instagram
               </Link>
+
               <Link
-                href="https://www.tiktok.com/@rebeccaagerber?_t=ZP-8tdp0clroQ3&_r=1"
-                color={TEXT}
-                textDecoration="underline"
-                _hover={{ color: TEXT, textDecoration: "underline" }}
+                href="https://pin.it/5pzSdeDdZ"
                 fontSize="lg"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
               >
-                TikTok
+                Pinterest
+              </Link>
+
+              <Link
+                href="https://depop.com/reb77"
+                fontSize="lg"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
+              >
+                Depop
+              </Link>
+
+              <Link
+                href="https://shopmy.us/coderwhoclothes"
+                fontSize="lg"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
+              >
+                ShopMy
+              </Link>
+
+              <Link
+                href="https://rvlv.me/yw6slx?navsrc=share_mylists"
+                fontSize="lg"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
+              >
+                Revolve
               </Link>
             </VStack>
           </Box>
