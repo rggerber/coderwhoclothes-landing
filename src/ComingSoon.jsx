@@ -228,6 +228,17 @@ export default function ComingSoon() {
               </Link>
 
               <Link
+                href="https://substack.com/@rebeccagerber"
+                isExternal
+                fontSize="md"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
+              >
+                Substack
+              </Link>
+
+              <Link
                 href="https://depop.com/reb77"
                 isExternal
                 fontSize="md"
