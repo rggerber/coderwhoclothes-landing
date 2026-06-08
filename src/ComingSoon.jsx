@@ -228,7 +228,7 @@ export default function ComingSoon() {
               </Link>
 
               <Link
-                href="https://substack.com/@rebeccagerber"
+                href="https://substack.com/@coderwhoclothes"
                 isExternal
                 fontSize="md"
                 color={TEXT}
