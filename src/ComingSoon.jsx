@@ -191,7 +191,7 @@ export default function ComingSoon() {
                 textDecoration="none"
                 _hover={{ textDecoration: "underline" }}
               >
-                TikTok
+                Personal TikTok
               </Link>
 
               <Link
@@ -217,17 +217,6 @@ export default function ComingSoon() {
               </Link>
 
               <Link
-                href="https://pin.it/5pzSdeDdZ"
-                isExternal
-                fontSize="md"
-                color={TEXT}
-                textDecoration="none"
-                _hover={{ textDecoration: "underline" }}
-              >
-                Pinterest
-              </Link>
-
-              <Link
                 href="https://substack.com/@coderwhoclothes"
                 isExternal
                 fontSize="md"
@@ -236,6 +225,28 @@ export default function ComingSoon() {
                 _hover={{ textDecoration: "underline" }}
               >
                 Substack
+              </Link>
+
+              <Link
+                href="https://www.youtube.com/channel/UC1C-DYKjwxinaLASt_l0H2w"
+                isExternal
+                fontSize="md"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
+              >
+                YouTube
+              </Link>
+
+              <Link
+                href="https://pin.it/5pzSdeDdZ"
+                isExternal
+                fontSize="md"
+                color={TEXT}
+                textDecoration="none"
+                _hover={{ textDecoration: "underline" }}
+              >
+                Pinterest
               </Link>
 
               <Link
