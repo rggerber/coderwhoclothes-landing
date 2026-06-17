@@ -191,7 +191,7 @@ export default function ComingSoon() {
                 textDecoration="none"
                 _hover={{ textDecoration: "underline" }}
               >
-                Personal TikTok
+                TikTok
               </Link>
 
               <Link
