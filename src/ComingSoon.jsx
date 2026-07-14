@@ -248,8 +248,23 @@ export default function ComingSoon() {
               >
                 Pinterest
               </Link>
+              </VStack>
+        </Box>
 
-              <Link
+        {/* 7. Collections section */}
+        <Box mt={{ base: 12, md: 16 }}>
+          <Text
+            color={TEXT}
+            fontSize="xs"
+            fontWeight="semibold"
+            textTransform="uppercase"
+            letterSpacing="0.2em"
+            mb={{ base: 6, md: 8 }}
+          >
+            Collections
+          </Text>
+          <VStack align="stretch" spacing={{ base: 5, md: 6 }}>
+          <Link
                 href="https://depop.com/reb77"
                 isExternal
                 fontSize="md"
@@ -281,8 +296,8 @@ export default function ComingSoon() {
               >
                 Revolve
               </Link>
-            </VStack>
-          </Box>
+              </VStack>
+        </Box>
       </Box>
 
       {/* Footer */}
