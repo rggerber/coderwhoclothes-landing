@@ -24,3 +24,6 @@
 .home-closing-philosophy{padding:60px 0 10px;text-align:center}.home-closing-philosophy .home-philosophy{margin:0 auto;max-width:none}.shopping-sections{padding-top:0}.writing-row img{aspect-ratio:auto;max-height:none}.article-preview img{aspect-ratio:auto;max-height:none}@media(max-width:650px){.home-closing-philosophy{padding-top:40px}.home-closing-philosophy .home-philosophy{max-width:100%;margin:0}}
 
 .home-nav .nav-email{border-bottom:1px solid var(--ink)}.home a.contact-email{display:inline-flex;align-items:center;gap:18px;min-height:48px;max-width:100%;font:clamp(17px,2vw,25px)/1.4 Georgia,serif;overflow-wrap:anywhere;border-bottom:1px solid var(--ink);margin:5px 0 15px}.contact-email span{flex-shrink:0}
+
+/* Article artwork keeps the uploaded image's full bounds. */
+.writing-row>a{overflow:visible}.writing-row img{display:block;align-self:center;flex:0 0 auto;width:100px;height:auto;min-height:0;max-height:none;aspect-ratio:auto;object-fit:contain;object-position:center;clip-path:none}@media(max-width:650px){.writing-row img{width:80px;height:auto}}
