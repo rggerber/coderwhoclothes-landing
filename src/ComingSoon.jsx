@@ -72,7 +72,7 @@ export default function ComingSoon() {
       px={{ base: 5, md: 8 }}
       display="flex"
       flexDirection="column"
-      alignItems="flex-start"
+      alignItems="center"
     >
       <Box maxW="720px" w="100%" as="main" textAlign="left">
         {/* 1. Large heading */}
@@ -118,7 +118,8 @@ export default function ComingSoon() {
           src="/hero.jpg"
           alt=""
           w="100%"
-          maxH={{ base: "340px", md: "520px" }}
+          maxH={{ base: "420px", md: "600px" }}
+          aspectRatio={{ base: "4 / 5", md: "6 / 5" }}
           objectFit="cover"
           display="block"
           my={{ base: 2, md: 0 }}
@@ -130,7 +131,7 @@ export default function ComingSoon() {
           border="1px solid"
           borderColor={BORDER}
           bg="#FCFBF8"
-          p={{ base: 8, md: 12 }}
+          p={{ base: 5, sm: 8, md: 12 }}
           mb={{ base: 20, md: 28 }}
         >
           <Text
@@ -145,6 +146,13 @@ export default function ComingSoon() {
             {!emailSubmitted ? (
               <VStack align="stretch" spacing={4} maxW="320px">
                 <Input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  aria-label="Email address"
+                  required
+                  fontSize="16px"
+                  minH="44px"
                   placeholder="Enter your email"
                   size="md"
                   borderColor={BORDER}
@@ -153,6 +161,7 @@ export default function ComingSoon() {
                 />
                 <Button
                   type="submit"
+                  minH="44px"
                   variant="outline"
                   borderColor={TEXT}
                   color={TEXT}
@@ -264,6 +273,18 @@ export default function ComingSoon() {
             Collections
           </Text>
           <VStack align="stretch" spacing={{ base: 5, md: 6 }}>
+            <Link href="/collections/aesthetics/" fontSize="md" color={TEXT}>
+              Aesthetics
+            </Link>
+            <Text color={TEXT} opacity={0.75} fontSize="sm">
+              Outfit studies and collages, collected by aesthetic.
+            </Text>
+            <Link href="/collections/edits/" fontSize="md" color={TEXT}>
+              Edits
+            </Link>
+            <Text color={TEXT} opacity={0.75} fontSize="sm">
+              Color stories, accessories, and particular finds.
+            </Text>
           <Link
                 href="https://depop.com/reb77"
                 isExternal
@@ -313,7 +334,7 @@ export default function ComingSoon() {
         fontSize="sm"
         textAlign="left"
       >
-        <Text>
+        <Text overflowWrap="anywhere">
           Contact:{" "}
           <Link
             href="mailto:hello@coderwhoclothes.com"
