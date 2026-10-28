@@ -31,7 +31,7 @@ Players and native text links appear in a swipeable row. They are not labelled
 newest-first because publication dates have not been verified. New YouTube
 uploads are not automatically imported yet. The two supplied TikTok short links
 remain direct links; individual players need their resolved canonical post IDs.
-TikTok's profile embed is available as a separate browseable section.
+TikTok accounts are linked with descriptions above the YouTube row; no TikTok embed is loaded.
 
 ## Search discovery
 
