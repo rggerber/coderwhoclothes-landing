@@ -40,3 +40,14 @@ Changing crawl/training access is separate from a content update. Current genera
 ## Verification
 
 `node scripts/check-collections.mjs` checks the production build's routes, disclosures, internal links, sitemap and draft exclusion. Run after `npm run build`. The check also validates group references and unique collage paths in the content source.
+
+## Homepage content and rotation
+
+The homepage is a mixed-format portfolio. Edit `content/home.mjs` to add real
+articles, videos, photos or edits. Existing entries are channel destinations,
+not claims that particular posts have been imported. Keep newest pieces first;
+set `featured: true` to include a piece in the spotlight. Each entry supports
+`category`, `label`, `title`, `description`, `url`, `visual`, `tone`, `image`, and
+`action`. Use only existing, authorized images. No social feeds are synced yet.
+The spotlight has manual selectors and optional eight-second rotation, disabled
+for reduced-motion preferences. Search and category filters act on this list.
