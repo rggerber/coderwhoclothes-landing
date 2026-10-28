@@ -74,12 +74,12 @@ export default function ComingSoon() {
       flexDirection="column"
       alignItems="center"
     >
-      <Box maxW="720px" w="100%" as="main" textAlign="left">
+      <Box maxW="1120px" w="100%" as="main" textAlign="left">
         {/* 1. Large heading */}
         <Heading
           as="h1"
           color={TEXT}
-          fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
+          fontSize={{ base: "4xl", md: "5xl", lg: "7xl" }}
           fontWeight="bold"
           letterSpacing="-0.02em"
           lineHeight="1.05"
@@ -118,8 +118,8 @@ export default function ComingSoon() {
           src="/hero.jpg"
           alt=""
           w="100%"
-          maxH={{ base: "420px", md: "600px" }}
-          aspectRatio={{ base: "4 / 5", md: "6 / 5" }}
+          maxH={{ base: "420px", md: "660px" }}
+          aspectRatio={{ base: "4 / 5", md: "16 / 9" }}
           objectFit="cover"
           display="block"
           my={{ base: 2, md: 0 }}
@@ -144,7 +144,7 @@ export default function ComingSoon() {
           </Text>
           <form onSubmit={handleSubmit}>
             {!emailSubmitted ? (
-              <VStack align="stretch" spacing={4} maxW="320px">
+              <VStack align="stretch" spacing={4} maxW={{ base: "100%", md: "440px" }}>
                 <Input
                   type="email"
                   name="email"
@@ -324,7 +324,7 @@ export default function ComingSoon() {
       {/* Footer */}
       <Box
         as="footer"
-        maxW="720px"
+        maxW="1120px"
         w="100%"
         mt={{ base: 24, md: 32 }}
         pt={{ base: 8, md: 10 }}
