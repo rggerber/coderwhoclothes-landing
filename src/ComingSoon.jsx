@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { elsewhere } from '../content/home.mjs';
 import { articles } from '../content/articles.mjs';
 import { videos } from '../content/videos.mjs';
+import { instagramPosts } from '../content/instagram.mjs';
 import { aesthetics, editTopics } from '../content/collections.mjs';
 import './home.css';
 function TikTokFeed(){
@@ -10,10 +11,8 @@ function TikTokFeed(){
  return <section className="social-feed" aria-labelledby="recent-video-heading"><div className="browse-heading"><div><p className="home-eyebrow">From TikTok</p><h2 id="recent-video-heading">Recent videos.</h2></div><a className="home-text-link" href="https://www.tiktok.com/@coderwhoclothess" target="_blank" rel="noopener noreferrer">View all videos ↗</a></div>{!ready?<button className="load-social" onClick={()=>setReady(true)}>Load recent TikTok videos ▷</button>:<blockquote className="tiktok-embed" cite="https://www.tiktok.com/@coderwhoclothess" data-unique-id="coderwhoclothess" data-embed-type="creator" style={{maxWidth:'100%',minWidth:'288px'}}><section><a href="https://www.tiktok.com/@coderwhoclothess" target="_blank" rel="noopener noreferrer">@coderwhoclothess — browse recent videos on TikTok</a></section></blockquote>}</section>
 }
 function InstagramFeed(){
- const fallback=['DcRG9iDEc3K','DfAUSV3kW2u','De9p0D7kRTB'].map(id=>({id,permalink:`https://www.instagram.com/p/${id}/`}));
- const [posts,setPosts]=useState(fallback),[live,setLive]=useState(false);
- useEffect(()=>{let cancelled=false;const controller=new AbortController();async function load(){try{const r=await fetch('/api/instagram',{signal:controller.signal});if(!r.ok)return;const d=await r.json();const valid=d.posts?.filter(p=>/^https:\/\/(www\.)?instagram\.com\/(p|reel)\/[A-Za-z0-9_-]+\/?$/.test(p.permalink));if(!cancelled&&valid?.length){setPosts(valid);setLive(true)}}catch{}}load();const timer=setInterval(load,15*60*1000);return()=>{cancelled=true;controller.abort();clearInterval(timer)}},[]);
- return <section id="recent-photos" className="recent-section"><p className="home-eyebrow">Photos & reels / Instagram</p><h2>{live?'The latest three.':'The visual diary.'}</h2><div className="instagram-previews">{posts.map((post,i)=><article key={post.id} className="instagram-post"><iframe title={'Instagram post '+(i+1)} src={post.permalink.replace(/\/$/,'')+'/embed/'} loading="lazy" allow="encrypted-media"/><a className="home-text-link" href={post.permalink} target="_blank" rel="noopener noreferrer">Open Instagram post ↗</a>{post.timestamp&&<time dateTime={post.timestamp}>{new Date(post.timestamp).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'})}</time>}</article>)}</div><a className="home-text-link" href="https://www.instagram.com/coderwhoclothes/" target="_blank" rel="noopener noreferrer">View all on Instagram ↗</a></section>
+ const posts=instagramPosts.map(id=>({id,permalink:`https://www.instagram.com/p/${id}/`}));
+ return <section id="recent-photos" className="recent-section"><p className="home-eyebrow">Photos & reels / Instagram</p><h2>The visual diary.</h2><div className="instagram-previews">{posts.map((post,i)=><article key={post.id} className="instagram-post"><iframe title={'Instagram post '+(i+1)} src={post.permalink.replace(/\/$/,'')+'/embed/'} loading="lazy" allow="encrypted-media"/><a className="home-text-link" href={post.permalink} target="_blank" rel="noopener noreferrer">Open Instagram post ↗</a>{post.timestamp&&<time dateTime={post.timestamp}>{new Date(post.timestamp).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'})}</time>}</article>)}</div><a className="home-text-link" href="https://www.instagram.com/coderwhoclothes/" target="_blank" rel="noopener noreferrer">View all on Instagram ↗</a></section>
 }
 export default function ComingSoon(){
  const [menu,setMenu]=useState(false),[submitted,setSubmitted]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');

@@ -1,33 +1,14 @@
 # Website content feeds
 
-## Instagram: connection required
+## Instagram: manually selected posts
 
-The server endpoint `/api/instagram` uses Meta's Instagram API with Instagram
-Login for the `coderwhoclothes` Professional (Creator or Business) account.
-An arbitrary Facebook/Page token is not interchangeable with this token.
-
-1. Authorize the account through a Meta developer app configured for Instagram
-   Login with the read permission `instagram_business_basic`.
-2. In Vercel, open this project's Settings → Environment Variables.
-3. Add `INSTAGRAM_ACCESS_TOKEN` with the Instagram user access token. Select
-   Production and Preview and mark it Sensitive. Do not prefix it with VITE_.
-4. Redeploy. The updated frontend will call `/api/instagram` automatically.
-5. Test that the endpoint returns three public post links and that the UI says
-   “The latest three.” A 503 means the token is missing; a 502 means Meta rejected
-   the request, returned no posts, or the account didn't match.
-
-The endpoint validates the account, fetches up to 100 media records, sorts by
-publication time and returns the latest three. Includes photo, carousel and reel
-posts; excludes Stories. Collaboration-only posts not returned by the account's
-media endpoint are not included. Cached for 15 minutes, plus up to five minutes
-stale while refreshing. An open page rechecks every 15 minutes. This is periodic
-refresh, not immediate push. On connection failure it keeps the existing posts.
-The three fixed posts remain a fallback until the account is connected.
-
-Token expiry/revocation is still a maintenance requirement. This implementation
-does not provision OAuth or persist token renewal. Replace the token in Vercel
-and redeploy when required. A managed Instagram feed provider is an alternative
-if maintaining a Meta app/token is undesirable.
+No API application, account connection or token is required. The three selected
+post IDs are in `content/instagram.mjs`, in display order. Each renders as a public
+Instagram embed with a native link. On phones/tablets the row scrolls sideways.
+Change that list and redeploy to swap the pictures. It does not claim to show the
+latest posts or auto-import new ones. Instagram controls the embed and may show
+a login/fallback state in some browsers. Existing `INSTAGRAM_ACCESS_TOKEN`
+variables in Vercel are unused and can be removed if previously added.
 
 ## Writing
 
