@@ -8,7 +8,7 @@ export function originalArticleImage(value){
    const tail=outer.pathname.match(/\/(https?(?:%3A|:)(?:%2F|\/){2}.*)$/i)?.[1];
    if(tail)source=new URL(decodeURIComponent(tail));
   }else if(outer.hostname==='substack-post-media.s3.amazonaws.com')source=outer;
-  if(source?.protocol==='https:'&&['substack-post-media.s3.amazonaws.com','substackcdn.com'].includes(source.hostname))return 'https://substackcdn.com/image/fetch/f_auto,q_auto/'+encodeURIComponent(source.href);
+  if(source?.protocol==='https:'&&['substack-post-media.s3.amazonaws.com','substackcdn.com'].includes(source.hostname))return 'https://substackcdn.com/image/fetch/w_1600,c_limit,f_auto,q_auto:good/'+encodeURIComponent(source.href);
  }catch{}
  return value;
 }

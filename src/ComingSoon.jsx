@@ -9,7 +9,7 @@ const featuredArticleSlugs=['the-10-aesthetics','im-a-fashion-girl-who-loves-a-c
 const featuredArticles=featuredArticleSlugs.map(slug=>articles.find(article=>article.slug===slug)).filter(Boolean);
 const otherArticles=articles.filter(article=>!featuredArticleSlugs.includes(article.slug));
 function ArticleImage({article}){
- const candidates=[...new Set([originalArticleImage(article.image),article.image].filter(Boolean))];
+ const candidates=[originalArticleImage(article.image)].filter(Boolean);
  const [attempt,setAttempt]=useState(0);
  if(!candidates[attempt])return null;
  return <img src={candidates[attempt]} alt={'Cover of '+article.title} loading="lazy" onError={()=>setAttempt(i=>i+1)}/>;
