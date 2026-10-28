@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { articles } from '../content/articles.mjs';
+import { videos } from '../content/videos.mjs';
+import handler,{newestPosts} from '../api/instagram.js';
+const html=await readFile('dist/index.html','utf8');
+for(const a of articles)assert(html.includes(a.url),`Prerendered article ${a.slug}`);
+for(const v of videos){assert(html.includes(`/embed/${v.id}`),'Video player in initial HTML');assert(html.includes(`/shorts/${v.id}`),'Native video link')}
+assert(html.indexOf('id="recent-edits"')<html.indexOf('id="recent-writing"'),'Shopping before writing');
+assert(!html.includes('In the spotlight'),'Spotlight removed');
+assert(html.includes('Style is cultivated. Attention refines it.'),'Philosophy retained');
+assert(html.includes('rel="canonical"')&&html.includes('application/ld+json'),'Homepage metadata');
+const sample=[['old','2020-01-01'],['new','2026-10-28'],['middle','2025-01-01'],['recent','2026-10-20']].map(([id,timestamp])=>({id,timestamp,permalink:`https://www.instagram.com/p/${id}/`,secret:'not public'}));
+assert.deepEqual(newestPosts([...sample,{id:'invalid',timestamp:'bad',permalink:'https://evil.example/'}]).map(p=>p.id),['new','recent','middle']);
+assert(!JSON.stringify(newestPosts(sample)).includes('secret'),'Only public allowlisted fields');
+const prior=process.env.INSTAGRAM_ACCESS_TOKEN;delete process.env.INSTAGRAM_ACCESS_TOKEN;
+const response={setHeader(){},status(code){this.code=code;return this},json(body){this.body=body;return this}};
+await handler({method:'GET'},response);assert.equal(response.code,503,'Missing token fails safely');
+if(prior!==undefined)process.env.INSTAGRAM_ACCESS_TOKEN=prior;
+console.log(`Verified ${articles.length} article links, ${videos.length} video embeds, section order, homepage metadata, feed ordering and missing-token handling.`);
