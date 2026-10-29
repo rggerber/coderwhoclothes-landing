@@ -36,3 +36,9 @@ footer>a{display:inline-flex;align-items:center;min-height:44px}
 @media(min-width:901px){
  header,main,footer{max-width:none;width:calc(100% - 64px)}
 }
+
+/* Visible navigation cues on every collection and edit, including touch screens. */
+.card-action{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;align-self:flex-start;min-height:44px;max-width:100%;margin-top:16px;padding:11px 18px;border:1px solid #694b35;font-size:14px;line-height:1.4;font-weight:600}
+.collection-card,.collage-card{cursor:pointer}
+.collection-card:hover .card-action,.collection-card:focus-visible .card-action,.collage-card:hover .card-action,.collage-card:focus-visible .card-action{background:#2c201c;color:#f4efe8}
+.collection-card:hover h2,.collage-card:hover h2{text-decoration:underline;text-underline-offset:5px}
