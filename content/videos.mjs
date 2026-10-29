@@ -1,5 +1,9 @@
-// Verified video IDs and titles from Rebecca’s public YouTube channel. No automatic ordering claimed.
+// Selected YouTube videos, in display order.
 export const videos = [
+  {
+    "id": "QcVrsMo-x-s",
+    "title": "Why do you like maximalism?"
+  },
   {
     "id": "zVbXZSBoZ_8",
     "title": "Taste & Tech Bros"
@@ -9,12 +13,8 @@ export const videos = [
     "title": "What is personal style?"
   },
   {
-    "id": "QcVrsMo-x-s",
-    "title": "Why do you like maximalism?"
-  },
-  {
     "id": "Soiht6DvazY",
-    "title": "I thought I\u2019d only wear this once!"
+    "title": "I thought I’d only wear this once!"
   },
   {
     "id": "OiIT-0rWKeM",
