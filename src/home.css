@@ -32,3 +32,8 @@
 
 /* Never constrain article art to a thumbnail rectangle. */
 .home .writing-row img{width:120px;height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;overflow:visible;flex-shrink:0}.home .writing-row>a{overflow:visible;align-items:center}@media(max-width:650px){.home .writing-row img{width:90px}}
+
+/* Keep the closing signup and contact sections together. */
+.home-newsletter{padding-bottom:24px}
+.home-newsletter + .home-contact{padding-top:24px;border-top:1px solid var(--line)}
+@media(max-width:650px){.home-newsletter{padding-bottom:20px}.home-newsletter + .home-contact{padding-top:20px}}
