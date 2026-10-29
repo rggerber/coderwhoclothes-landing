@@ -1,361 +1,40 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Heading,
-  Text,
-  Input,
-  Button,
-  VStack,
-  Link,
-  useToast,
-} from "@chakra-ui/react";
+import React, { useState } from 'react';
+import { elsewhere } from '../content/home.mjs';
+import { articles } from '../content/articles.mjs';
+import { originalArticleImage } from '../content/article-images.mjs';
+import { videos } from '../content/videos.mjs';
+import { instagramPosts } from '../content/instagram.mjs';
+import './home.css';
+const featuredArticleSlugs=['the-10-aesthetics','im-a-fashion-girl-who-loves-a-costume','personal-style-in-the-age-of-optimization'];
+const featuredArticles=featuredArticleSlugs.map(slug=>articles.find(article=>article.slug===slug)).filter(Boolean);
+const otherArticles=articles.filter(article=>!featuredArticleSlugs.includes(article.slug));
+function ArticleImage({article}){
+ const candidates=[originalArticleImage(article.image)].filter(Boolean);
+ const [attempt,setAttempt]=useState(0);
+ if(!candidates[attempt])return null;
+ return <img src={candidates[attempt]} alt={'Cover of '+article.title} loading="lazy" onError={()=>setAttempt(i=>i+1)}/>;
+}
+function InstagramFeed(){
+ const posts=instagramPosts.map(id=>({id,permalink:`https://www.instagram.com/p/${id}/`}));
+ return <section id="recent-photos" className="recent-section"><p className="home-eyebrow">Photos & reels / Instagram</p><h2>The visual diary.</h2><div className="instagram-previews">{posts.map((post,i)=><article key={post.id} className="instagram-post"><iframe title={'Instagram post '+(i+1)} src={post.permalink.replace(/\/$/,'')+'/embed/'} loading="lazy" allow="encrypted-media"/><a className="home-text-link" href={post.permalink} target="_blank" rel="noopener noreferrer">Open Instagram post ↗</a>{post.timestamp&&<time dateTime={post.timestamp}>{new Date(post.timestamp).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'})}</time>}</article>)}</div><a className="home-text-link" href="https://www.instagram.com/coderwhoclothes/" target="_blank" rel="noopener noreferrer">View all on Instagram ↗</a></section>
+}
+export default function ComingSoon(){
+ const [menu,setMenu]=useState(false),[submitted,setSubmitted]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState(''),[copyMessage,setCopyMessage]=useState('');
+ async function copyEmail(){try{await navigator.clipboard.writeText('hello@coderwhoclothes.com');setCopyMessage('Email address copied.')}catch{setCopyMessage('Select and copy the address above.')}}
+ async function subscribe(e){e.preventDefault();setBusy(true);setMessage('');try{const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:new FormData(e.currentTarget).get('email')})});if(!r.ok)throw Error();setSubmitted(true);setMessage("You're on the list.")}catch{setMessage('Could not subscribe. Please try again.')}finally{setBusy(false)}}
+ return <div className="home"><a className="home-skip" href="#main">Skip to content</a>
+ <header className="home-header"><a href="/" className="home-brand">Rebecca Gerber<span>Coder Who Clothes</span></a><button className="menu-button" aria-expanded={menu} aria-controls="home-nav" onClick={()=>setMenu(!menu)}>{menu?'Close −':'Explore +'}</button><nav id="home-nav" className={menu?'home-nav is-open':'home-nav'} aria-label="Main navigation"><a href="#browse" onClick={()=>setMenu(false)}>Browse</a><a href="/collections/aesthetics/">Aesthetics</a><a href="/collections/edits/">Edits</a><a href="#contact" className="nav-email" onClick={()=>setMenu(false)}>Email me</a></nav></header>
+ <main id="main"><section className="home-intro"><p className="home-eyebrow">Software engineer. Fashion thinker.</p><h1>A considered eye.<br/><em>A curious mind.</em></h1><div className="intro-bottom"><p>Writing, style, and things worth a closer look.</p><a href="#browse">Browse my work <span aria-hidden="true">↓</span></a></div></section>
+ <figure className="home-original-photo"><img src="/hero.jpg" alt="Rebecca reclining on a cream sofa at home beneath colorful artwork" fetchpriority="high"/></figure>
+ <nav id="browse" className="home-quick-links" aria-label="Explore by format">{['Aesthetics','Edits','Videos','Photos','Writing'].map(c=><a key={c} href={'#recent-'+c.toLowerCase()}><span>{c}</span><span aria-hidden="true">↓</span></a>)}</nav>
+ <div className="shopping-sections"><section id="recent-aesthetics" className="recent-section"><p className="home-eyebrow">Collections / Aesthetics</p><h2>Aesthetics.</h2><p className="section-description">Outfit studies and collages, collected by aesthetic.</p><a className="home-text-link" href="/collections/aesthetics/">Explore aesthetics ↗</a></section><section id="recent-edits" className="recent-section"><p className="home-eyebrow">Collections / Edits</p><h2>Edits.</h2><p className="section-description">Color stories, accessories, and particular finds.</p><a className="home-text-link" href="/collections/edits/">Explore edits ↗</a></section></div>
+ <section id="recent-videos" className="recent-section"><p className="home-eyebrow">Videos</p><h2>Watch & explore.</h2><div className="tiktok-accounts"><a href="https://www.tiktok.com/@coderwhoclothess" target="_blank" rel="noopener noreferrer"><span className="home-eyebrow">Style TikTok</span><h3>@coderwhoclothess ↗</h3><p>Personal style, fashion, and the why behind what you wear.</p></a><a href="https://www.tiktok.com/@rebeccaagerber" target="_blank" rel="noopener noreferrer"><span className="home-eyebrow">Personal TikTok</span><h3>@rebeccaagerber ↗</h3><p>My personal account: life, interests, and everything in between.</p></a></div><div className="youtube-heading"><p className="home-eyebrow">On YouTube</p><a href="https://www.youtube.com/@coderwhoclothes" target="_blank" rel="noopener noreferrer">View channel ↗</a></div><div className="youtube-rail">{videos.map(video=><article className="youtube-short" key={video.id}><iframe src={`https://www.youtube.com/embed/${video.id}`} title={video.title+' — Rebecca Gerber'} loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen/><a className="home-text-link" href={`https://www.youtube.com/shorts/${video.id}`} target="_blank" rel="noopener noreferrer">{video.title} ↗</a></article>)}</div></section>
+ <InstagramFeed/>
 
-const BG = "#F4EFE8";
-const TEXT = "#2C201C";
-const BORDER = "#EAE4DA";
+ <section id="recent-writing" className="recent-section writing-section"><div className="writing-intro"><p className="home-eyebrow">On Substack</p><h2>Writing.</h2><p className="section-description">Thoughts on fashion, taste, and personal style.</p><a className="home-text-link" href="https://coderwhoclothes.substack.com/" target="_blank" rel="noopener noreferrer">Visit my Substack ↗</a></div><div className="writing-list">{featuredArticles.map(article=><article className="writing-row" key={article.slug}><a href={article.url} target="_blank" rel="noopener noreferrer"><ArticleImage article={article}/><h3>{article.title}</h3><span aria-hidden="true">↗</span></a></article>)}<details className="more-writing"><summary>More articles <span aria-hidden="true">+</span></summary>{otherArticles.map(article=><article className="writing-row" key={article.slug}><a href={article.url} target="_blank" rel="noopener noreferrer"><ArticleImage article={article}/><h3>{article.title}</h3><span aria-hidden="true">↗</span></a></article>)}</details></div></section>
+ <div className="home-closing-philosophy"><p className="home-philosophy">Style is cultivated. Attention refines it.</p></div>
 
-export default function ComingSoon() {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
-  const toast = useToast();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const email = e.target[0].value;
-
-    try {
-      // const response = await fetch("http://localhost:5001/subscribe", {
-        const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setEmailSubmitted(true);
-        toast({
-          title: "Subscription Successful!",
-          description: "You've been added to the list.",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-      } else {
-        toast({
-          title: "Subscription Failed",
-          description: "Something went wrong. Please try again.",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      toast({
-        title: "Subscription Failed",
-        description: "Failed to subscribe. Please try again.",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-  };
-
-  return (
-    <Box
-      bg={BG}
-      minH="100vh"
-      py={{ base: 14, md: 20 }}
-      px={{ base: 5, md: 8 }}
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-    >
-      <Box maxW="720px" w="100%" as="main" textAlign="left">
-        {/* 1. Large heading */}
-        <Heading
-          as="h1"
-          color={TEXT}
-          fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
-          fontWeight="bold"
-          letterSpacing="-0.02em"
-          lineHeight="1.05"
-          mb={{ base: 3, md: 4 }}
-        >
-          Rebecca Gerber
-        </Heading>
-
-        {/* 2. Subheading */}
-        <Text
-          color={TEXT}
-          fontSize={{ base: "md", md: "lg" }}
-          fontWeight="medium"
-          opacity={0.9}
-          mb={{ base: 10, md: 14 }}
-        >
-          Software engineer. Fashion thinker.
-        </Text>
-
-        {/* 3. Serif philosophy */}
-        <Text
-          color={TEXT}
-          fontFamily="Georgia, 'Times New Roman', serif"
-          fontSize={{ base: "xl", md: "2xl" }}
-          fontStyle="italic"
-          letterSpacing="0.01em"
-          lineHeight="1.5"
-          mb={{ base: 14, md: 20 }}
-        >
-          Style is cultivated. Attention refines it.
-        </Text>
-
-        {/* 4. Hero image */}
-        <Box
-          as="img"
-          src="/hero.jpg"
-          alt=""
-          w="100%"
-          maxH={{ base: "420px", md: "600px" }}
-          aspectRatio={{ base: "4 / 5", md: "6 / 5" }}
-          objectFit="cover"
-          display="block"
-          my={{ base: 2, md: 0 }}
-          mb={{ base: 16, md: 24 }}
-        />
-
-        {/* 5. Email signup card */}
-        <Box
-          border="1px solid"
-          borderColor={BORDER}
-          bg="#FCFBF8"
-          p={{ base: 5, sm: 8, md: 12 }}
-          mb={{ base: 20, md: 28 }}
-        >
-          <Text
-            color={TEXT}
-            fontSize="md"
-            mb={6}
-            opacity={0.9}
-          >
-            Building something new. Join early access.
-          </Text>
-          <form onSubmit={handleSubmit}>
-            {!emailSubmitted ? (
-              <VStack align="stretch" spacing={4} maxW="320px">
-                <Input
-                  type="email"
-                  name="email"
-                  autoComplete="email"
-                  aria-label="Email address"
-                  required
-                  fontSize="16px"
-                  minH="44px"
-                  placeholder="Enter your email"
-                  size="md"
-                  borderColor={BORDER}
-                  _focus={{ borderColor: TEXT, boxShadow: "none" }}
-                  color={TEXT}
-                />
-                <Button
-                  type="submit"
-                  minH="44px"
-                  variant="outline"
-                  borderColor={TEXT}
-                  color={TEXT}
-                  _hover={{ bg: "transparent", borderColor: TEXT, color: TEXT }}
-                  size="md"
-                >
-                  Join Early Access
-                </Button>
-              </VStack>
-            ) : (
-              <Text color={TEXT} fontWeight="medium">
-                You're in.
-              </Text>
-            )}
-          </form>
-        </Box>
-
-        {/* 6. Find Me section */}
-        <Box>
-          <Text
-            color={TEXT}
-            fontSize="xs"
-            fontWeight="semibold"
-            textTransform="uppercase"
-            letterSpacing="0.2em"
-            mb={{ base: 6, md: 8 }}
-          >
-            Find Me
-          </Text>
-          <VStack align="stretch" spacing={{ base: 5, md: 6 }}>
-              <Link
-                href="https://www.tiktok.com/@rebeccaagerber"
-                isExternal
-                fontSize="md"
-                color={TEXT}
-                textDecoration="none"
-                _hover={{ textDecoration: "underline" }}
-              >
-                TikTok
-              </Link>
-
-              <Link
-                href="https://www.tiktok.com/@coderwhoclothess"
-                isExternal
-                fontSize="md"
-                color={TEXT}
-                textDecoration="none"
-                _hover={{ textDecoration: "underline" }}
-              >
-                Style TikTok
-              </Link>
-
-              <Link
-                href="https://instagram.com/coderwhoclothes"
-                isExternal
-                fontSize="md"
-                color={TEXT}
-                textDecoration="none"
-                _hover={{ textDecoration: "underline" }}
-              >
-                Instagram
-              </Link>
-
-              <Link
-                href="https://substack.com/@coderwhoclothes"
-                isExternal
-                fontSize="md"
-                color={TEXT}
-                textDecoration="none"
-                _hover={{ textDecoration: "underline" }}
-              >
-                Substack
-              </Link>
-
-              <Link
-                href="https://www.youtube.com/channel/UC1C-DYKjwxinaLASt_l0H2w"
-                isExternal
-                fontSize="md"
-                color={TEXT}
-                textDecoration="none"
-                _hover={{ textDecoration: "underline" }}
-              >
-                YouTube
-              </Link>
-
-              <Link
-                href="https://pin.it/5pzSdeDdZ"
-                isExternal
-                fontSize="md"
-                color={TEXT}
-                textDecoration="none"
-                _hover={{ textDecoration: "underline" }}
-              >
-                Pinterest
-              </Link>
-              </VStack>
-        </Box>
-
-        {/* 7. Collections section */}
-        <Box mt={{ base: 12, md: 16 }}>
-          <Text
-            color={TEXT}
-            fontSize="xs"
-            fontWeight="semibold"
-            textTransform="uppercase"
-            letterSpacing="0.2em"
-            mb={{ base: 6, md: 8 }}
-          >
-            Collections
-          </Text>
-          <VStack align="stretch" spacing={{ base: 5, md: 6 }}>
-            <Link href="/collections/aesthetics/" fontSize="md" color={TEXT}>
-              Aesthetics
-            </Link>
-            <Text color={TEXT} opacity={0.75} fontSize="sm">
-              Outfit studies and collages, collected by aesthetic.
-            </Text>
-            <Link href="/collections/edits/" fontSize="md" color={TEXT}>
-              Edits
-            </Link>
-            <Text color={TEXT} opacity={0.75} fontSize="sm">
-              Color stories, accessories, and particular finds.
-            </Text>
-          <Link
-                href="https://depop.com/reb77"
-                isExternal
-                fontSize="md"
-                color={TEXT}
-                textDecoration="none"
-                _hover={{ textDecoration: "underline" }}
-              >
-                Depop
-              </Link>
-
-              <Link
-                href="https://shopmy.us/coderwhoclothes"
-                isExternal
-                fontSize="md"
-                color={TEXT}
-                textDecoration="none"
-                _hover={{ textDecoration: "underline" }}
-              >
-                ShopMy
-              </Link>
-
-              <Link
-                href="https://rvlv.me/yw6slx?navsrc=share_mylists"
-                isExternal
-                fontSize="md"
-                color={TEXT}
-                textDecoration="none"
-                _hover={{ textDecoration: "underline" }}
-              >
-                Revolve
-              </Link>
-              </VStack>
-        </Box>
-      </Box>
-
-      {/* Footer */}
-      <Box
-        as="footer"
-        maxW="720px"
-        w="100%"
-        mt={{ base: 24, md: 32 }}
-        pt={{ base: 8, md: 10 }}
-        borderTop="1px solid"
-        borderColor={BORDER}
-        color={TEXT}
-        fontSize="sm"
-        textAlign="left"
-      >
-        <Text overflowWrap="anywhere">
-          Contact:{" "}
-          <Link
-            href="mailto:hello@coderwhoclothes.com"
-            textDecoration="underline"
-            _hover={{ color: TEXT }}
-          >
-            hello@coderwhoclothes.com
-          </Link>
-          {" · "}
-          <Link
-            href="https://www.coderwhoclothes.com/privacy_policy.html"
-            textDecoration="underline"
-            _hover={{ color: TEXT }}
-          >
-            Privacy Policy
-          </Link>
-        </Text>
-        <Text mt={3}>
-          © {new Date().getFullYear()} CoderWhoClothes. All Rights Reserved.
-        </Text>
-      </Box>
-    </Box>
-  );
+ <section id="keep-in-touch" className="home-newsletter"><div><p className="home-eyebrow">Keep in touch</p><h2>Something new,<br/><em>when it’s ready.</em></h2><p>Sign up for early access.</p></div><form onSubmit={subscribe}>{!submitted&&<><label htmlFor="home-email">Your email address</label><div className="signup-row"><input id="home-email" name="email" type="email" autoComplete="email" required placeholder="you@example.com"/><button disabled={busy}>{busy?'Joining…':'Sign up for early access ↗'}</button></div></>}<p role="status">{message}</p></form></section>
+ <section id="contact" className="home-contact"><p className="home-eyebrow">Contact</p><h2>Say hello.</h2><a className="contact-email" href="mailto:hello@coderwhoclothes.com">hello@coderwhoclothes.com <span aria-hidden="true">↗</span></a><div className="contact-actions"><button type="button" onClick={copyEmail}>Copy email address</button><span role="status">{copyMessage}</span></div></section>
+ </main><footer className="home-footer"><div><a className="home-brand" href="/">Rebecca Gerber<span>Software engineer. Fashion thinker.</span></a><p>Ad · I may earn a commission from purchases through shopping links.</p></div><div className="footer-links">{elsewhere.map(([name,url])=><a key={name} href={url} target="_blank" rel={name==='ShopMy'||name==='Revolve'?'sponsored noopener noreferrer':'noopener noreferrer'}>{name} ↗</a>)}<a href="mailto:hello@coderwhoclothes.com">Contact ↗</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Coder Who Clothes</span><a href="/privacy_policy.html">Privacy policy</a></div></footer></div>
 }

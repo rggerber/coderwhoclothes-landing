@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/build-collections.mjs",
+    "build": "node scripts/sync-articles.mjs && vite build && node scripts/build-collections.mjs && node scripts/render-home.mjs",
     "preview": "vite preview",
-    "build:preview": "vite build && node scripts/build-collections.mjs --drafts",
-    "preview:collections": "npm run build:preview && vite preview --host 0.0.0.0"
+    "build:preview": "node scripts/sync-articles.mjs && vite build && node scripts/build-collections.mjs --drafts && node scripts/render-home.mjs --drafts",
+    "preview:collections": "npm run build:preview && vite preview --host 0.0.0.0",
+    "sync:articles": "node scripts/sync-articles.mjs"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.0",

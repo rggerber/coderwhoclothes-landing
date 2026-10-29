@@ -40,3 +40,8 @@ Changing crawl/training access is separate from a content update. Current genera
 ## Verification
 
 `node scripts/check-collections.mjs` checks the production build's routes, disclosures, internal links, sitemap and draft exclusion. Run after `npm run build`. The check also validates group references and unique collage paths in the content source.
+
+## Homepage content
+
+See `CONTENT-FEEDS.md` for article/video records, the Instagram feed connection,
+cover metadata fetching, and prerendered search discovery.
