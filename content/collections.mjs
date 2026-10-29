@@ -12,6 +12,15 @@ export const aesthetics = [
   ['controlled-wild', 'Controlled Wild', 'Animal print and statement texture, grounded by simpler supporting pieces.', '4163437', '#d6c3a7'],
 ].map(([slug, title, description, collectionId, color]) => ({ slug, title, description, color, shopUrl: `https://shopmy.us/shop/collections/${collectionId}` }));
 
+// User-selected moodboard covers, kept in their full original proportions.
+const coverSlugs = ["collected-contrast", "controlled-wild", "structured-intelligence", "sculpted-minimalism", "cultured-eclectic", "sculpted-contrast", "refined-ease", "relaxed-layering", "controlled-sensuality", "tempered-romance"];
+for (const group of aesthetics) {
+ if (coverSlugs.includes(group.slug)) {
+  group.cover = `/aesthetic-covers/${group.slug}.jpg`;
+  group.coverAlt = `${group.title} outfit moodboard`;
+ }
+}
+
 // These are thematic edits, not aesthetics. Collages are stored separately below.
 export const editTopics = [
   { slug: 'green-bags', title: 'Green bags', description: 'A color-focused edit of green evening bags, clutches and statement shapes.', color: '#cdd7b4', shopUrl: 'https://shopmy.us/collections/8326267', shopLabel: 'Browse the wider bag collection' },

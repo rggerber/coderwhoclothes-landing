@@ -11,6 +11,7 @@ const paths = ['/collections/', '/collections/aesthetics/', '/collections/edits/
 const groups = [...aesthetics, ...editTopics];
 const disclosure = '<p class="disclosure">Ad · I may earn a commission from purchases through links on this page.</p>';
 function cover(group) {
+  if(group.cover)return `<img class="collection-cover" src="${esc(group.cover)}" alt="${esc(group.coverAlt || group.title)}" width="900" height="1600" loading="lazy">`;
   return `<div class="cover" style="--cover:${esc(group.color)}"><span>CODER WHO CLOTHES</span><strong>${esc(group.title)}</strong><i>Style is cultivated.</i></div>`;
 }
 function card(group, section) {
@@ -35,7 +36,7 @@ for (const [section,title,description,data] of [
   ['aesthetics','Aesthetics','A style vocabulary, collected over time. Explore each aesthetic and the outfit studies within it.',aesthetics],
   ['edits','Edits','A color, a shape, a particular detail. Focused shopping edits from across the collections.',editTopics]
 ]) {
-  await page(`/collections/${section}/`,title,description,`<a class="back" href="/collections/">← Collections</a><p class="eyebrow">${section==='aesthetics'?'A point of view':'A particular find'}</p><h1>${title}</h1><p class="intro">${description}</p><div class="grid">${data.map(g=>card(g,section)).join('')}</div>`,{items:data.map(g=>({title:g.title,path:`/collections/${section}/${g.slug}/`}))});
+  await page(`/collections/${section}/`,title,description,`<a class="back" href="/collections/">← Collections</a><p class="eyebrow">${section==='aesthetics'?'A point of view':'A particular find'}</p><h1>${title}</h1><p class="intro">${description}</p><div class="grid collection-grid">${data.map(g=>card(g,section)).join('')}</div>`,{items:data.map(g=>({title:g.title,path:`/collections/${section}/${g.slug}/`}))});
   for (const group of data) {
     const entries=visible.filter(c=>c.group===group.slug&&c.section===section);
     const path=`/collections/${section}/${group.slug}/`;paths.push(path);

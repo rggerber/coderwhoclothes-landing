@@ -11,3 +11,5 @@ nav a,.back{display:inline-flex;align-items:center;min-height:44px}
 footer>a{display:inline-flex;align-items:center;min-height:44px}
 @media(min-width:651px) and (max-width:900px){header,main,footer{padding-left:28px;padding-right:28px}.article-layout{grid-template-columns:1fr;max-width:720px}.article-image{max-width:560px}.cover{padding:22px}}
 @media(max-width:380px){header,main,footer{padding-left:16px;padding-right:16px}.cover{padding:20px}.cover strong{font-size:34px}.swatch{width:44px;height:44px}.section-choices>a{padding:20px}.section-choices h2{font-size:32px}}
+
+.collection-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.collection-cover{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain}.collection-card:has(.collection-cover){align-self:start}@media(max-width:900px){.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.collection-grid{grid-template-columns:1fr}}
