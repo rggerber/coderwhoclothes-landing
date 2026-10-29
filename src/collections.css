@@ -31,3 +31,8 @@ footer>a{display:inline-flex;align-items:center;min-height:44px}
  .collection-grid>.collection-card:only-child .small{margin-top:24px}
  footer{font-size:14px}
 }
+
+/* Desktop collection pages follow the viewport instead of a fixed page cap. */
+@media(min-width:901px){
+ header,main,footer{max-width:none;width:calc(100% - 64px)}
+}
