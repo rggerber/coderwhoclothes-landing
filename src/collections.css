@@ -13,3 +13,21 @@ footer>a{display:inline-flex;align-items:center;min-height:44px}
 @media(max-width:380px){header,main,footer{padding-left:16px;padding-right:16px}.cover{padding:20px}.cover strong{font-size:34px}.swatch{width:44px;height:44px}.section-choices>a{padding:20px}.section-choices h2{font-size:32px}}
 
 .collection-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.collection-cover{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain}.collection-card:has(.collection-cover){align-self:start}@media(max-width:900px){.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.collection-grid{grid-template-columns:1fr}}
+
+/* Use the available laptop/desktop canvas; a lone edit becomes a feature. */
+@media(min-width:901px){
+ header,main,footer{max-width:1440px;width:calc(100% - 96px);padding-left:0;padding-right:0}
+ header{padding-top:32px;padding-bottom:25px}
+ .wordmark{font-size:26px}nav{font-size:16px;gap:28px}
+ main{padding-top:48px;padding-bottom:75px}
+ .intro{font-size:20px;max-width:760px}
+ .back{font-size:15px}.card-info p{font-size:17px}.small{font-size:12px}
+ .collection-grid>.collection-card:only-child{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:0;align-items:stretch;border:1px solid #dfd6cc}
+ .collection-grid>.collection-card:only-child .cover{aspect-ratio:1.3;padding:40px;min-height:380px}
+ .collection-grid>.collection-card:only-child .cover strong{font-size:clamp(48px,5vw,76px);max-width:none}
+ .collection-grid>.collection-card:only-child .card-info{display:flex;flex-direction:column;justify-content:center;padding:44px}
+ .collection-grid>.collection-card:only-child h2{font-size:clamp(36px,3vw,48px);margin-top:0}
+ .collection-grid>.collection-card:only-child .card-info p{font-size:18px;line-height:1.7;max-width:480px}
+ .collection-grid>.collection-card:only-child .small{margin-top:24px}
+ footer{font-size:14px}
+}
