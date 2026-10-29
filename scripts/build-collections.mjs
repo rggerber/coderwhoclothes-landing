@@ -16,10 +16,10 @@ function cover(group) {
 }
 function card(group, section) {
   const count = visible.filter(c => c.section === section && c.group === group.slug).length;
-  return `<a class="collection-card" href="/collections/${section}/${group.slug}/">${cover(group)}<div class="card-info"><h2>${esc(group.title)}</h2><p>${esc(group.description)}</p><span class="small">${count ? `${count} ${count === 1 ? 'edit' : 'edits'}${preview ? ' · preview' : ''}` : 'Explore the collection'} <span aria-hidden="true">↗</span></span></div></a>`;
+  return `<a class="collection-card" href="/collections/${section}/${group.slug}/">${cover(group)}<div class="card-info"><h2>${esc(group.title)}</h2><p>${esc(group.description)}</p>${count ? `<span class="small">${count} ${count === 1 ? 'edit' : 'edits'}${preview ? ' · preview' : ''}</span>` : ''}<span class="card-action">Explore collection <span aria-hidden="true">→</span></span></div></a>`;
 }
 function collageCard(c) {
-  return `<a class="collage-card" href="/collections/${c.section}/${c.group}/${c.slug}/"><img src="/collection-assets/${esc(c.image)}" alt="${esc(c.alt)}" width="1000" height="1500" loading="lazy"><h2>${esc(c.title)}</h2><p>${esc(c.description)}</p>${c.status === 'draft' ? '<span class="draft-tag">Draft preview</span>' : ''}</a>`;
+  return `<a class="collage-card" href="/collections/${c.section}/${c.group}/${c.slug}/"><img src="/collection-assets/${esc(c.image)}" alt="${esc(c.alt)}" width="1000" height="1500" loading="lazy"><h2>${esc(c.title)}</h2><p>${esc(c.description)}</p><span class="card-action">View edit <span aria-hidden="true">→</span></span>${c.status === 'draft' ? '<span class="draft-tag">Draft preview</span>' : ''}</a>`;
 }
 async function page(path, title, description, body, {draft = false, type = 'CollectionPage', items = [], image = null} = {}) {
   const canonical = `${origin}${path}`;
