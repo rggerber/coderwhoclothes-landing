@@ -23,8 +23,8 @@ for (const group of aesthetics) {
 
 // Edits → category → individual edit → outfit visuals. Aesthetics stay separate.
 export const editCategories = [
-  { slug: 'statement-bags-clutches', title: 'Statement Bags & Clutches', description: 'Distinctive bags, evening clutches and accessories worth building an outfit around. Explore color stories and considered shapes.', color: '#ded6c7' },
   { slug: 'fall-fashion', title: 'Fall Fashion', description: 'Fall fashion inspiration through rich textures, relaxed tailoring and sophisticated everyday outfits. Explore neutral wardrobe styling and seasonal color stories.', color: '#d6c3af' },
+  { slug: 'statement-bags-clutches', title: 'Statement Bags & Clutches', description: 'Distinctive bags, evening clutches and accessories worth building an outfit around. Explore color stories and considered shapes.', color: '#ded6c7' },
 ];
 
 // Set category on every edit. Optional path preserves a legacy public URL.
