@@ -34,7 +34,7 @@ export const editTopics = [
 ];
 
 editTopics.push({
-  slug: 'nico', category: 'fall-fashion', title: 'Nico', layout: 'editorial',
+  slug: 'nico', category: 'fall-fashion', title: 'Nico', layout: 'editorial', showCoverOnPage: false,
   searchTitle: 'Nico: Elevated Denim & Neutral Fall Outfit Ideas',
   description: 'Nico is a considered approach to everyday dressing, built around elevated denim, tonal browns, and sophisticated combinations of cream, camel, and navy. The collection brings together relaxed tailoring, rich textures, soft knitwear, and polished accessories for a wardrobe that feels effortless but intentional.',
   metaDescription: 'Explore elevated denim outfit ideas, chocolate brown outfits, and cream, camel and navy combinations in Nico, a considered fall fashion edit by Rebecca Gerber.',
