@@ -23,8 +23,8 @@ for (const group of aesthetics) {
 
 // Edits → category → individual edit → outfit visuals. Aesthetics stay separate.
 export const editCategories = [
-  { slug: 'statement-bags-clutches', title: 'Statement Bags & Clutches', description: 'Distinctive bags, evening clutches and accessories worth building an outfit around. Explore color stories and considered shapes.', color: '#ded6c7' },
   { slug: 'fall-fashion', title: 'Fall Fashion', description: 'Fall fashion inspiration through rich textures, relaxed tailoring and sophisticated everyday outfits. Explore neutral wardrobe styling and seasonal color stories.', color: '#d6c3af' },
+  { slug: 'statement-bags-clutches', title: 'Statement Bags & Clutches', description: 'Distinctive bags, evening clutches and accessories worth building an outfit around. Explore color stories and considered shapes.', color: '#ded6c7' },
 ];
 
 // Set category on every edit. Optional path preserves a legacy public URL.
@@ -34,7 +34,7 @@ export const editTopics = [
 ];
 
 editTopics.push({
-  slug: 'nico', category: 'fall-fashion', title: 'Nico', layout: 'editorial',
+  slug: 'nico', category: 'fall-fashion', title: 'Nico', layout: 'editorial', showCoverOnPage: false,
   searchTitle: 'Nico: Elevated Denim & Neutral Fall Outfit Ideas',
   description: 'Nico is a considered approach to everyday dressing, built around elevated denim, tonal browns, and sophisticated combinations of cream, camel, and navy. The collection brings together relaxed tailoring, rich textures, soft knitwear, and polished accessories for a wardrobe that feels effortless but intentional.',
   metaDescription: 'Explore elevated denim outfit ideas, chocolate brown outfits, and cream, camel and navy combinations in Nico, a considered fall fashion edit by Rebecca Gerber.',
