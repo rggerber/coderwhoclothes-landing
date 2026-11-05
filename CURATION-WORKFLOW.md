@@ -37,3 +37,7 @@ description: Create Rebecca Gerber's Coder Who Clothes four-product fashion coll
 - Fetch verified Pinterest impressions, saves and OUTBOUND clicks. Do not substitute pin clicks. Compare matching pin-age windows at 7, 30 and 60 days; never sum cumulative snapshots. Preserve raw extracts, capture dates and stable IDs. Missing is unknown, not zero.
 - Keep confirmed ShopMy commissions and reversals separate. Do not attribute collection-wide sales to Pinterest or individual pins without a verified source. Avoid winners based on tiny samples. Different aesthetics are not controlled tests; propose one-variable creative/title iterations.
 - Coordinate with the existing Monday afternoon Pinterest performance review. Use a separate creation task for new batches, avoid duplicate tasks and duplicate edits, and report concrete drafts/actions/blockers. Do not claim automatic intake, posting or deployment works before verified access exists.
+
+## Gift guide updates
+
+Add gift guides as individual Edits under the `gift-guides` category in `content/collections.mjs`. Keep each slide in order with its original dimensions, point every shopping CTA to that guide's verified ShopMy collection, and preserve the commission disclosure. Social slide comment prompts do not serve as the website shopping flow; the website's ShopMy CTA provides the full list. Check the category, gallery, detail pages, and mobile/full-size viewer in the normal PR review workflow.

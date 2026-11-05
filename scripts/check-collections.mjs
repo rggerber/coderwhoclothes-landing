@@ -64,3 +64,29 @@ for(const c of collages.filter(c=>c.group==='nico')) {
   assert(nicoHtml.includes(`width="${c.width}" height="${c.height}"`), 'Native image dimensions');
 }
 console.log('Verified nested categories, legacy Green Bags routes, three Nico originals, disclosures, approved ShopMy destinations, breadcrumbs and sharing metadata.');
+for (const [slug, count, destination] of [
+  ['gifts-under-50', 9, 'https://shopmy.us/collections/8678994'],
+  ['gifts-under-100', 11, 'https://shopmy.us/collections/8678998'],
+  ['gifts-under-250', 10, 'https://shopmy.us/collections/8679003'],
+  ['the-splurge', 10, 'https://shopmy.us/collections/8679006'],
+  ['whats-on-my-wishlist', 8, 'https://shopmy.us/collections/8679008'],
+  ['gifts-for-the-homebody', 8, 'https://shopmy.us/collections/8679009'],
+  ['jewelry-shell-actually-wear', 11, 'https://shopmy.us/collections/8679011'],
+  ['vintage-designer-gifts', 3, 'https://shopmy.us/collections/8679012'],
+  ['gifts-for-him', 4, 'https://shopmy.us/collections/8679014'],
+]) {
+  const group = editTopics.find(g => g.slug === slug);
+  const path = groupPath('edits', group);
+  const html = await readFile(`dist${path}index.html`, 'utf8');
+  const slides = collages.filter(c => c.group === slug);
+  assert.equal(slides.length, count, 'Complete gift guide');
+  assert.equal((html.match(/class="outfit-visual"/g) || []).length, count, 'Each slide displayed once');
+  assert.equal((html.match(/class="shop-link"/g) || []).length, 2, 'Top and bottom shopping CTAs');
+  assert([...html.matchAll(/class="shop-link" href="([^"]+)"[^>]*rel="([^"]+)"/g)].every(m => m[1] === destination && m[2].includes('sponsored')), 'Approved gift guide destination');
+  assert(html.includes('Ad ·') && html.includes('BreadcrumbList') && sitemap.includes(path), 'Disclosure and discovery');
+  for (const slide of slides) {
+    assert(html.includes(`src="/collection-assets/${slide.image}"`), 'Slide in gallery');
+    assert((await readFile(`content/drafts/assets/${slide.image}`)).equals(await readFile(`dist/collection-assets/${slide.image}`)), 'Original image copied exactly');
+  }
+}
+console.log('Verified 74 gift guide slides, direct ShopMy links, disclosures and gallery routes.');

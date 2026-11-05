@@ -23,6 +23,7 @@ for (const group of aesthetics) {
 
 // Edits → category → individual edit → outfit visuals. Aesthetics stay separate.
 export const editCategories = [
+  { slug: 'gift-guides', title: 'Gift Guides', description: 'Thoughtful finds for giving, from small delights to pieces worth the upgrade. Browse curated ideas by budget.', color: '#e5d5cc' },
   { slug: 'fall-fashion', title: 'Fall Fashion', description: 'Fall fashion inspiration through rich textures, relaxed tailoring and sophisticated everyday outfits. Explore neutral wardrobe styling and seasonal color stories.', color: '#d6c3af' },
   { slug: 'statement-bags-clutches', title: 'Statement Bags & Clutches', description: 'Distinctive bags, evening clutches and accessories worth building an outfit around. Explore color stories and considered shapes.', color: '#ded6c7' },
 ];
@@ -31,7 +32,30 @@ export const editCategories = [
 // Collages (outfit visuals) are stored separately below.
 export const editTopics = [
   { slug: 'green-bags', category: 'statement-bags-clutches', path: '/collections/edits/green-bags/', title: 'Green bags', description: 'A color-focused edit of green evening bags, clutches and statement shapes.', color: '#cdd7b4', shopUrl: 'https://shopmy.us/collections/8326267', shopLabel: 'Browse the wider bag collection' },
+  { slug: 'gifts-under-50', category: 'gift-guides', title: 'Gifts Under $50', layout: 'editorial', searchTitle: 'Gifts Under $50: Thoughtful Gift Guide', description: 'Little luxuries, personal accessories, beauty finds and thoughtful objects I would actually give. Explore the nine-slide gift guide and shop the full selection.', metaDescription: 'Explore Rebecca Gerber’s Gifts Under $50 guide, with ideas across accessories, beauty, home and more. View the editorial slides and shop the linked collection.', color: '#e8ddd2', cover: '/collection-assets/01-under-50-01.webp', coverAlt: 'Gifts Under $50 editorial cover featuring gold earrings, a bright scarf, beauty products and accessories.', coverWidth: 1080, coverHeight: 1920, showCoverOnPage: false, shopUrl: 'https://shopmy.us/collections/8678994', shopLabel: 'Shop Gifts Under $50', galleryTitle: 'The gift guide', note: 'These slides were designed for social sharing. Shop the linked collection for the full list and current product details.' },
+  { slug: 'gifts-under-100', category: 'gift-guides', title: 'Gifts Under $100', layout: 'editorial', searchTitle: 'Gifts Under $100: Considered Gift Guide', description: 'Pieces worth the upgrade: expressive accessories, soft layers, beauty and home finds that feel special to give. Explore the eleven-slide guide and shop the full selection.', metaDescription: 'Explore Rebecca Gerber’s Gifts Under $100 guide, with considered fashion, beauty and home gift ideas. View the editorial slides and shop the linked collection.', color: '#ded4d4', cover: '/collection-assets/02-under-100-01.webp', coverAlt: 'Gifts Under $100 editorial cover featuring a lilac sweater, red pouch, colorful bowl, beauty products and accessories.', coverWidth: 1080, coverHeight: 1920, showCoverOnPage: false, shopUrl: 'https://shopmy.us/collections/8678998', shopLabel: 'Shop Gifts Under $100', galleryTitle: 'The gift guide', note: 'These slides were designed for social sharing. Shop the linked collection for the full list and current product details.' },
 ];
+
+for (const [slug, title, prefix, collectionId, description, color] of [
+  ['gifts-under-250', 'Gifts Under $250', '03-under-250', '8679003', 'A considered mix of fashion, accessories, jewelry and pieces for the home, with gifts for the people closest to you.', '#ded6cb'],
+  ['the-splurge', 'The Splurge', '04-splurge', '8679006', 'Statement pieces and enduring luxuries for a memorable gift.', '#d7c8bb'],
+  ['whats-on-my-wishlist', "What's on My Wishlist", '05-wishlist', '8679008', 'The fashion, accessories and jewelry I keep coming back to.', '#ded2ca'],
+  ['gifts-for-the-homebody', 'Gifts for the Homebody', '06-homebody', '8679009', 'Comfort, character and little rituals for staying in.', '#d9dbca'],
+  ['jewelry-shell-actually-wear', "Jewelry She'll Actually Wear", '07-jewelry', '8679011', 'Everyday pieces with a little sparkle, from delicate details to expressive rings.', '#e7dcd0'],
+  ['vintage-designer-gifts', 'Vintage Designer Gifts', '08-vintage', '8679012', 'Pre-owned designer finds with individual character.', '#d6c8b7'],
+  ['gifts-for-him', 'Gifts for Him', '09-for-him', '8679014', 'Useful, considered gifts for his wardrobe and everyday life.', '#ded8cc'],
+]) {
+  editTopics.push({
+    slug, category: 'gift-guides', title, layout: 'editorial',
+    searchTitle: `${title}: Coder Who Clothes Gift Guide`, description: `${description} Explore the slides and shop the full selection.`,
+    metaDescription: `Explore Rebecca Gerber’s ${title} guide. View the editorial slides and shop the linked collection.`,
+    color, cover: `/collection-assets/${prefix}-01.webp`, coverAlt: `${title} editorial gift guide cover.`,
+    coverWidth: 1080, coverHeight: 1920, showCoverOnPage: false,
+    shopUrl: `https://shopmy.us/collections/${collectionId}`, shopLabel: `Shop ${title}`,
+    galleryTitle: 'The gift guide',
+    note: 'These slides were designed for social sharing. Shop the linked collection for the full list and current product details.',
+  });
+}
 
 editTopics.push({
   slug: 'nico', category: 'fall-fashion', title: 'Nico', layout: 'editorial', showCoverOnPage: false,
@@ -66,3 +90,22 @@ collages.push(
   { slug: 'espresso-dressing', section: 'edits', group: 'nico', status: 'published', title: 'Espresso Dressing', searchTitle: 'Nico — Espresso Dressing & Chocolate Brown Outfits', description: 'Rich browns, suede textures, soft knits, and relaxed tailoring create a tonal wardrobe with depth and character.', image: 'nico-espresso-dressing.jpeg', width: 1320, height: 1964, alt: 'AI-assisted Espresso Dressing editorial collage showing tonal brown outfits with checked tailoring, textured knitwear, a camel skirt, trousers and brown accessories.', interpretation: true },
   { slug: 'cream-camel-navy', section: 'edits', group: 'nico', status: 'published', title: 'Cream, Camel & Navy', searchTitle: 'Nico — Cream, Camel & Navy Outfit Ideas', description: 'Soft cream knitwear and camel suede meet structured navy pieces, balancing ease with a more polished silhouette.', image: 'nico-cream-camel-navy.jpeg', width: 1320, height: 1962, alt: 'AI-assisted Nico editorial collage combining cream knitwear and blouses, a camel skirt, navy trousers and outerwear, and brown bags and heels.', interpretation: true },
 );
+
+// Supplied social slides in original sequence and proportions. Current shopping
+// details are supplied by each guide's ShopMy collection.
+for (const [group, prefix, count, title] of [
+  ['gifts-under-50', '01-under-50', 9, 'Gifts Under $50'],
+  ['gifts-under-100', '02-under-100', 11, 'Gifts Under $100'],
+  ['gifts-under-250', '03-under-250', 10, 'Gifts Under $250'],
+  ['the-splurge', '04-splurge', 10, 'The Splurge'],
+  ['whats-on-my-wishlist', '05-wishlist', 8, "What's on My Wishlist"],
+  ['gifts-for-the-homebody', '06-homebody', 8, 'Gifts for the Homebody'],
+  ['jewelry-shell-actually-wear', '07-jewelry', 11, "Jewelry She'll Actually Wear"],
+  ['vintage-designer-gifts', '08-vintage', 3, 'Vintage Designer Gifts'],
+  ['gifts-for-him', '09-for-him', 4, 'Gifts for Him'],
+]) {
+  for (let number = 1; number <= count; number++) {
+    const page = String(number).padStart(2, '0');
+    collages.push({ slug: `slide-${page}`, section: 'edits', group, status: 'published', title: number === 1 ? 'The cover' : number === count ? 'The full list' : `Gift ideas · ${page}`, searchTitle: `${title} — Slide ${number} of ${count}`, description: number === 1 ? `An introduction to the ${title} edit.` : number === count ? 'A final look at the guide. Open the ShopMy collection for every shopping link.' : `A page of ideas from the ${title} guide.`, image: `${prefix}-${page}.webp`, width: 1080, height: 1920, alt: `${title} editorial gift guide collage, slide ${number} of ${count}${number === count ? ', with a prompt to view the full list' : ''}.`, interpretation: true });
+  }
+}
