@@ -79,8 +79,8 @@ for (const [slug, count, destination] of [
   const path = groupPath('edits', group);
   const html = await readFile(`dist${path}index.html`, 'utf8');
   const slides = collages.filter(c => c.group === slug);
-  assert.equal(slides.length, count, 'Complete gift guide');
-  assert.equal((html.match(/class="outfit-visual"/g) || []).length, count, 'Each slide displayed once');
+  assert.equal(slides.length, count - 1, 'Gift guide omits final social comment CTA');
+  assert.equal((html.match(/class="outfit-visual"/g) || []).length, count - 1, 'Each remaining slide displayed once');
   assert.equal((html.match(/class="shop-link"/g) || []).length, 2, 'Top and bottom shopping CTAs');
   assert([...html.matchAll(/class="shop-link" href="([^"]+)"[^>]*rel="([^"]+)"/g)].every(m => m[1] === destination && m[2].includes('sponsored')), 'Approved gift guide destination');
   assert(html.includes('Ad ·') && html.includes('BreadcrumbList') && sitemap.includes(path), 'Disclosure and discovery');
@@ -89,4 +89,4 @@ for (const [slug, count, destination] of [
     assert((await readFile(`content/drafts/assets/${slide.image}`)).equals(await readFile(`dist/collection-assets/${slide.image}`)), 'Original image copied exactly');
   }
 }
-console.log('Verified 74 gift guide slides, direct ShopMy links, disclosures and gallery routes.');
+console.log('Verified 65 gift guide slides, direct ShopMy links, disclosures and gallery routes.');
