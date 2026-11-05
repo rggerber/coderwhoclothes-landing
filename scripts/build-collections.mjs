@@ -20,7 +20,8 @@ function cover(group) {
 }
 function card(group, section) {
   const count = visible.filter(c => c.section === section && c.group === group.slug).length;
-  return `<a class="collection-card" href="${groupPath(section, group)}">${cover(group)}<div class="card-info"><h2>${esc(group.title)}</h2><p>${esc(group.description)}</p>${count ? `<span class="small">${count} ${section === 'edits' ? (count === 1 ? 'outfit visual' : 'outfit visuals') : (count === 1 ? 'edit' : 'edits')}${preview ? ' · preview' : ''}</span>` : ''}<span class="card-action">Explore collection <span aria-hidden="true">→</span></span></div></a>`;
+  const countLabel = section === 'edits' ? (count === 1 ? 'visual' : 'visuals') : (count === 1 ? 'edit' : 'edits');
+  return `<a class="collection-card" href="${groupPath(section, group)}">${cover(group)}<div class="card-info"><h2>${esc(group.title)}</h2><p>${esc(group.description)}</p>${count ? `<span class="small">${count} ${countLabel}${preview ? ' · preview' : ''}</span>` : ''}<span class="card-action">Explore collection <span aria-hidden="true">→</span></span></div></a>`;
 }
 function collageCard(c) {
   return `<a class="collage-card" href="${visualPath(c)}"><img src="/collection-assets/${esc(c.image)}" alt="${esc(c.alt)}" width="${c.width || 1000}" height="${c.height || 1500}" loading="lazy"><h2>${esc(c.title)}</h2><p>${esc(c.description)}</p><span class="card-action">View edit <span aria-hidden="true">→</span></span>${c.status === 'draft' ? '<span class="draft-tag">Draft preview</span>' : ''}</a>`;

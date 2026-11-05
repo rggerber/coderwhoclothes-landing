@@ -3,7 +3,7 @@
 The existing React/Vite landing page remains at `/`. Its Collections section now links to two static, build-generated sections:
 
 - `/collections/aesthetics/`: aesthetic groups, each containing any number of collages.
-- `/collections/edits/`: categories → individual edits → outfit visuals.
+- `/collections/edits/`: categories → individual edits → visuals.
 
 Edits categories are separate from the unchanged Aesthetics grouping.
 
@@ -22,7 +22,7 @@ Edit `content/collections.mjs`:
 1. For Aesthetics, add a group to `aesthetics`. For Edits, add a category to `editCategories` (slug, title, description, neutral cover color), then an individual edit to `editTopics` with its parent `category` slug. A category can contain any number of edits.
    - `groupPath(section, group)` is the single source for URLs. New edits use `/collections/edits/{category}/{edit}/`; never hard-code another URL pattern in templates or checks.
    - An optional explicit `path` retains a legacy URL. Green Bags remains at `/collections/edits/green-bags/`, including its existing `green-four-ways/` detail page. Its category membership changes navigation only; no redirect or duplicate page is needed.
-   - Use `layout: 'editorial'` for an edit with an introduction, cover and responsive outfit gallery. Set `cover`, `coverAlt`, `coverWidth`, `coverHeight`, `searchTitle`, `metaDescription`, `shopUrl` and `shopLabel` in the content data. Every new edit can support any number of outfit visuals.
+   - Use `layout: 'editorial'` for an edit with an introduction, cover and responsive visual gallery. Set `cover`, `coverAlt`, `coverWidth`, `coverHeight`, `searchTitle`, `metaDescription`, `shopUrl` and `shopLabel` in the content data. Every new edit can support any number of visuals.
 2. Add a collage to `collages`, with `section`, `group`, a unique `slug`, title, useful description, accurate image alt text, verified product names and the image filename. For supplied AI-assisted editorial interpretations, set `interpretation: true`, native `width` and `height` on each visual, and a visible `interpretation` explanation on its parent edit; omit unverified product names instead of inventing them. Multiple entries may share one group; there is no one-collage limit.
 3. Place the image in `content/drafts/assets/`. This source folder is outside `public`; unpublished images are not copied into a production build.
 4. Review image usage, product colors, current availability, affiliate disclosures and the matching collection destination. Keep new unapproved visuals as drafts; retain already approved content and destinations.

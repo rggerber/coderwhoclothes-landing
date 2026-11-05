@@ -21,15 +21,15 @@ for (const group of aesthetics) {
  }
 }
 
-// Edits → category → individual edit → outfit visuals. Aesthetics stay separate.
+// Edits → category → individual edit → visuals. Aesthetics stay separate.
 export const editCategories = [
-  { slug: 'gift-guides', title: 'Gift Guides', description: 'Thoughtful finds for giving, from small delights to pieces worth the upgrade. Browse curated ideas by budget.', color: '#e5d5cc' },
+  { slug: 'gift-guides', title: 'Gift Guides', description: 'Thoughtful finds for giving, from small delights to pieces worth the upgrade. Browse curated ideas by budget and occasion.', color: '#e5d5cc' },
   { slug: 'fall-fashion', title: 'Fall Fashion', description: 'Fall fashion inspiration through rich textures, relaxed tailoring and sophisticated everyday outfits. Explore neutral wardrobe styling and seasonal color stories.', color: '#d6c3af' },
   { slug: 'statement-bags-clutches', title: 'Statement Bags & Clutches', description: 'Distinctive bags, evening clutches and accessories worth building an outfit around. Explore color stories and considered shapes.', color: '#ded6c7' },
 ];
 
 // Set category on every edit. Optional path preserves a legacy public URL.
-// Collages (outfit visuals) are stored separately below.
+// Collages and guide visuals are stored separately below.
 export const editTopics = [
   { slug: 'green-bags', category: 'statement-bags-clutches', path: '/collections/edits/green-bags/', title: 'Green bags', description: 'A color-focused edit of green evening bags, clutches and statement shapes.', color: '#cdd7b4', shopUrl: 'https://shopmy.us/collections/8326267', shopLabel: 'Browse the wider bag collection' },
   { slug: 'gifts-under-50', category: 'gift-guides', title: 'Gifts Under $50', layout: 'editorial', searchTitle: 'Gifts Under $50: Thoughtful Gift Guide', description: 'Little luxuries, personal accessories, beauty finds and thoughtful objects I would actually give. Explore the gift guide and shop the full selection.', metaDescription: 'Explore Rebecca Gerber’s Gifts Under $50 guide, with ideas across accessories, beauty, home and more. View the editorial slides and shop the linked collection.', color: '#e8ddd2', cover: '/collection-assets/01-under-50-01.webp', coverAlt: 'Gifts Under $50 editorial cover featuring gold earrings, a bright scarf, beauty products and accessories.', coverWidth: 1080, coverHeight: 1920, showCoverOnPage: false, shopUrl: 'https://shopmy.us/collections/8678994', shopLabel: 'Shop Gifts Under $50', galleryTitle: 'The gift guide', note: 'These slides were designed for social sharing. Shop the linked collection for the full list and current product details.' },
