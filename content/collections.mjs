@@ -111,3 +111,63 @@ for (const [group, prefix, count, title] of [
     collages.push({ slug: `slide-${page}`, section: 'edits', group, status: 'published', title: number === 1 ? 'The cover' : `Gift ideas · ${page}`, searchTitle: `${title} — Slide ${number} of ${count - 1}`, description: number === 1 ? `An introduction to the ${title} edit.` : `A page of ideas from the ${title} guide.`, image: `${prefix}-${page}.webp`, width: 1080, height: 1920, alt: `${title} editorial gift guide collage, slide ${number} of ${count - 1}.`, interpretation: true });
   }
 }
+
+export const draftEditCategories = [
+  {
+    "slug": "jewelry",
+    "title": "Jewelry",
+    "description": "Small details that change how an outfit reads.",
+    "color": "#eee5d4"
+  },
+  {
+    "slug": "winter-style",
+    "title": "Winter Style",
+    "description": "Warm layers and accessories with a point of view.",
+    "color": "#e9e4df"
+  },
+  {
+    "slug": "occasion-dressing",
+    "title": "Occasion Dressing",
+    "description": "Styling ideas for formal occasions.",
+    "color": "#eee5e2"
+  }
+];
+
+export const draftEditTopics = [
+  {
+    "slug": "sculptural-brooches",
+    "category": "jewelry",
+    "title": "Sculptural Brooches",
+    "description": "Try a botanical pin on a lapel or a silver drop brooch at a scarf fold. The bold gold Sundra is especially striking on a clean, dark coat.",
+    "color": "#eee5d4",
+    "shopUrl": "https://shopmy.us/shop/collections/4853801",
+    "shopLabel": "Shop the edit"
+  },
+  {
+    "slug": "winter-accessories",
+    "category": "winter-style",
+    "title": "Winter Scarves, Gloves & Beanie",
+    "description": "Try red leather gloves with a black cashmere beanie and a graphic scarf. Swap in the deep red fringed scarf for a more tonal accent over a dark coat.",
+    "color": "#e9e4df",
+    "shopUrl": "https://shopmy.us/shop/collections/4053072",
+    "shopLabel": "Shop the edit"
+  },
+  {
+    "slug": "black-tie-gowns",
+    "category": "occasion-dressing",
+    "title": "Black-Tie Gowns",
+    "description": "Use the dress texture to guide the accessories. Try a simple cuff with a sculpted strapless gown or a small satin clutch with the lace dress.",
+    "color": "#eee5e2",
+    "shopUrl": "https://shopmy.us/shop/collections/7689015",
+    "shopLabel": "Shop the edit"
+  }
+];
+
+collages.push(
+  {"slug": "embroidered-jacket-satin-skirt", "section": "aesthetics", "group": "collected-contrast", "status": "draft", "title": "Embroidered Jacket & Satin Skirt", "searchTitle": "Embroidered Jacket Outfit with an Ivory Satin Maxi Skirt", "description": "Let the embroidery lead over the ivory satin skirt. Fringe loafers give the hem a little weight, and a chartreuse knot bag picks up the warmth in the stitching.", "image": "CWC-2026-11-09-collected-contrast.png", "width": 1000, "height": 1500, "alt": "Black embroidered jacket, ivory pleated maxi skirt, chartreuse knot bag and black fringed loafers in a four-photo grid.", "products": ["RIXO Denver Jacket", "Manière De Voir Fiona Skirt", "Mélisse Chartreuse Knot Bag", "Burberry Fringe Loafers"]},
+  {"slug": "charcoal-storm-grey", "section": "aesthetics", "group": "structured-intelligence", "status": "draft", "title": "Charcoal & Storm Grey Tailoring", "searchTitle": "Grey Tailoring Outfit with Wide-Leg Trousers and Ballet Flats", "description": "Pair a fitted charcoal flannel top with storm-grey pleated trousers. Cream square-toe flats break up the grey, while a black leather tote adds scale.", "image": "CWC-2026-11-09-structured-intelligence.png", "width": 1000, "height": 1500, "alt": "Charcoal flannel top, storm-grey pleated trousers, black leather tote and pale square-toe ballet flat in a four-photo grid.", "products": ["EAVES Helge Flannel Top", "Frankie Shop Marfa Trousers", "Maison Essentiele Leather Tote", "Mansur Gavriel Jasmine Flats"]},
+  {"slug": "pear-green-cocoa", "section": "aesthetics", "group": "tempered-romance", "status": "draft", "title": "Pear Green & Cocoa", "searchTitle": "Pear Green Top Outfit with an Asymmetric Brown Skirt", "description": "Set a pear-green draped top against the cocoa skirt. Black ballet flats keep the line light, and a slouchy pale suede bag softens the finish.", "image": "CWC-2026-11-09-tempered-romance.png", "width": 1000, "height": 1500, "alt": "Pear-green draped top, dark brown asymmetric skirt, black ballet flats and pale slouchy bag in a four-photo grid.", "products": ["Rio Bamboo Top in Pear", "1999 Estudio Falda Sueño Café", "Scarlet & Sam Noa Ballet Flat", "Cielle Gamuza Bag"]},
+  {"slug": "four-brooches", "section": "edits", "group": "sculptural-brooches", "status": "draft", "title": "Sculptural Brooches", "searchTitle": "Sculptural Brooches for Blazers, Coats and Scarves", "description": "Try a botanical pin on a lapel or a silver drop brooch at a scarf fold. The bold gold Sundra is especially striking on a clean, dark coat.", "image": "CWC-2026-11-09-sculptural-brooches.png", "width": 1000, "height": 1500, "alt": "Gold rose pin, enamel lily-of-the-valley pin, silver dangling brooch and sculptural gold brooch in a four-photo grid.", "products": ["Last Rose Brooch", "Lily-of-the-Valley Brooch", "Lovers and Friends Perla Brooch", "Jenny Bird Sundra Brooch"]},
+  {"slug": "scarves-gloves-beanie", "section": "edits", "group": "winter-accessories", "status": "draft", "title": "Winter Scarves, Gloves & Beanie", "searchTitle": "Winter Accessories: Red Leather Gloves, Scarves and Cashmere Beanie", "description": "Try red leather gloves with a black cashmere beanie and a graphic scarf. Swap in the deep red fringed scarf for a more tonal accent over a dark coat.", "image": "CWC-2026-11-09-winter-accessories.png", "width": 1000, "height": 1500, "alt": "Black-and-white graphic scarf, red leather gloves, black ribbed beanie and deep red fringed scarf in a four-photo grid.", "products": ["Acne Studios Vadik Scarf", "J.Crew Leather Tech-Touch Gloves", "J.Crew Ribbed Cashmere Beanie", "Mango Fringed Edge Scarf"]},
+  {"slug": "four-evening-gowns", "section": "edits", "group": "black-tie-gowns", "status": "draft", "title": "Black-Tie Gowns", "searchTitle": "Black-Tie Gowns: Strapless, Corset and Lace Evening Dresses", "description": "Use the dress texture to guide the accessories. Try a simple cuff with a sculpted strapless gown or a small satin clutch with the lace dress.", "image": "CWC-2026-11-09-black-tie-gowns.png", "width": 1000, "height": 1500, "alt": "Three dark formal gowns with strapless or lace details and a deep-blue bustier gown in a four-photo grid.", "products": ["Black Halo Divina Gown", "Simkhai Emma Bustier Gown", "Alex Perry Corset Drape Gown", "Alice + Olivia Rosemarie Gown"]}
+);

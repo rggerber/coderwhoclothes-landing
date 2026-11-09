@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import { readFile, access, readdir } from 'node:fs/promises';
-import { aesthetics, editCategories, editTopics, collages, groupPath } from '../content/collections.mjs';
+import { aesthetics, editCategories, editTopics, draftEditTopics, draftEditCategories, collages, groupPath } from '../content/collections.mjs';
 const slugs = new Set();
 for (const c of collages) {
   assert(['aesthetics','edits'].includes(c.section), 'Valid collage section');
-  assert((c.section==='aesthetics'?aesthetics:editTopics).some(g=>g.slug===c.group), `Missing group: ${c.group}`);
+  assert((c.section==='aesthetics'?aesthetics:[...editTopics,...draftEditTopics]).some(g=>g.slug===c.group), `Missing group: ${c.group}`);
   const key=`${c.section}/${c.group}/${c.slug}`;assert(!slugs.has(key),'Unique collage paths');slugs.add(key);
   assert(c.alt && (c.products?.length || c.interpretation) && c.image,'Complete editorial data or explicit interpretation');
 }
@@ -19,11 +19,16 @@ for (const file of files.filter(f=>f.endsWith('.html'))) {
 }
 const sitemap=await readFile('dist/sitemap.xml','utf8');
 for(const c of collages.filter(c=>c.status==='draft')) {
-  const group=(c.section==='edits'?editTopics:aesthetics).find(g=>g.slug===c.group);
+  const group=(c.section==='edits'?[...editTopics,...draftEditTopics]:aesthetics).find(g=>g.slug===c.group);
   const path=`${groupPath(c.section,group)}${c.slug}/`;
   assert(!sitemap.includes(path),'Drafts excluded from sitemap');
   await assert.rejects(access(`dist${path}index.html`));
   if(!collages.some(p=>p.status==='published'&&p.image===c.image))await assert.rejects(access(`dist/collection-assets/${c.image}`));
+}
+for (const category of draftEditCategories) {
+  const path = `/collections/edits/${category.slug}/`;
+  assert(!sitemap.includes(path), 'Draft category excluded from sitemap');
+  await assert.rejects(access(`dist${path}index.html`));
 }
 for(const g of [...aesthetics,...editTopics]) {
   const section=aesthetics.includes(g)?'aesthetics':'edits';const text=await readFile(`dist${groupPath(section,g)}index.html`,'utf8');assert(text.includes('rel="sponsored noopener noreferrer"'),'Affiliate disclosure and link attributes');assert(text.includes('Ad ·'),'Commission disclosure');
