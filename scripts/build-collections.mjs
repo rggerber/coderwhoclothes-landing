@@ -1,6 +1,8 @@
 import { mkdir, writeFile, copyFile, readFile, rm } from 'node:fs/promises';
-import { aesthetics, editCategories, editTopics, collages, groupPath } from '../content/collections.mjs';
+import { aesthetics, editCategories as publicEditCategories, editTopics as publicEditTopics, draftEditCategories, draftEditTopics, collages, groupPath } from '../content/collections.mjs';
 const preview = process.argv.includes('--drafts');
+const editCategories = preview ? [...publicEditCategories, ...draftEditCategories] : publicEditCategories;
+const editTopics = preview ? [...publicEditTopics, ...draftEditTopics] : publicEditTopics;
 // Remove previous generated output when switching between preview and production.
 await rm('dist/collections', { recursive: true, force: true });
 await rm('dist/collection-assets', { recursive: true, force: true });
