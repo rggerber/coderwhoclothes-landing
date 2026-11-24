@@ -55,3 +55,4 @@ footer>a{display:inline-flex;align-items:center;min-height:44px}
 
 /* An edit can retain its directory thumbnail without repeating it above its gallery. */
 .editorial-heading.editorial-heading-text{display:block}
+.image-viewer{cursor:zoom-in}.image-viewer img{transition:opacity .2s}.image-viewer:hover img{opacity:.92}
