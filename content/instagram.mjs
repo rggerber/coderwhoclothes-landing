@@ -1,2 +1,2 @@
-// Rebecca’s selected posts, in display order.
-export const instagramPosts = ['DcRG9iDEc3K', 'DfAUSV3kW2u', 'DRP6UC9EZg9'];
+// Rebecca’s selected posts, newest first. Shown as a horizontal scroll rail.
+export const instagramPosts = ['Df5HiGOFu4D', 'DfsfCyFGcVt', 'Dfh9f7IGZvJ', 'DfXlJIdFumz', 'DfAUSV3kW2u', 'DeHmQRvMqhE', 'DcRG9iDEc3K', 'DRP6UC9EZg9'];

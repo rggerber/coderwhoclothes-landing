@@ -37,3 +37,4 @@
 .home-newsletter{padding-bottom:24px}
 .home-newsletter + .home-contact{padding-top:24px;border-top:1px solid var(--line)}
 @media(max-width:650px){.home-newsletter{padding-bottom:20px}.home-newsletter + .home-contact{padding-top:20px}}
+.instagram-previews{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 0;margin:8px 0 28px}.instagram-post{flex:0 0 340px;min-width:0;scroll-snap-align:start}.instagram-post iframe{height:620px}@media(max-width:650px){.instagram-post{flex-basis:85%}}
