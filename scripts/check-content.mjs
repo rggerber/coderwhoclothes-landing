@@ -12,4 +12,4 @@ assert(html.includes('Style is cultivated. Attention refines it.'),'Philosophy r
 assert(html.includes('rel="canonical"')&&html.includes('application/ld+json'),'Homepage metadata');
 for(const id of instagramPosts)assert(html.includes(`https://www.instagram.com/p/${id}/embed/`),'Selected Instagram embed in initial HTML');
 assert(!html.includes('/api/instagram'),'No token feed dependency');
-console.log(`Verified ${articles.length} article links, ${videos.length} video embeds, three selected Instagram embeds, section order and homepage metadata.`);
+console.log(`Verified ${articles.length} article links, ${videos.length} video embeds, ${instagramPosts.length} selected Instagram embeds, section order and homepage metadata.`);

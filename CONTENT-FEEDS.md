@@ -4,7 +4,7 @@
 
 No API application, account connection or token is required. The three selected
 post IDs are in `content/instagram.mjs`, in display order. Each renders as a public
-Instagram embed with a native link. On phones/tablets the row scrolls sideways.
+Instagram embed with a native link. The row scrolls sideways at every screen size, newest first.
 Change that list and redeploy to swap the pictures. It does not claim to show the
 latest posts or auto-import new ones. Instagram controls the embed and may show
 a login/fallback state in some browsers. Existing `INSTAGRAM_ACCESS_TOKEN`
