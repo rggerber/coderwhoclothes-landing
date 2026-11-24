@@ -17,6 +17,8 @@ Examples:
 
 ## Repeatable content updates
 
+Order: newer edits always appear first in their category. Insert a new edit before the older edits of its category (for example with `editTopics.splice(editTopics.findIndex(t => t.category === '<slug>'), 0, {...})`) rather than appending it. Within an edit, keep visuals in their intended order.
+
 Edit `content/collections.mjs`:
 
 1. For Aesthetics, add a group to `aesthetics`. For Edits, add a category to `editCategories` (slug, title, description, neutral cover color), then an individual edit to `editTopics` with its parent `category` slug. A category can contain any number of edits.

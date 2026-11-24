@@ -115,7 +115,8 @@ for (const [group, prefix, count, title] of [
 // Fall/Winter '26 secondhand finds: 14 four-product visuals covering all 56 items
 // in ShopMy collection 9344223. Product photos are the listing photos. eBay listings
 // without a readable title are described by what is pictured, not given a product name.
-editTopics.push({
+// Newest edits go first in their category: insert before older ones.
+editTopics.splice(editTopics.findIndex(t => t.category === 'fall-fashion'), 0, {
   slug: 'fall-winter-26-secondhand-finds', category: 'fall-fashion', title: "Fall/Winter '26 Secondhand Finds", layout: 'editorial', showCoverOnPage: false,
   searchTitle: "Affordable Fall/Winter '26 Secondhand Finds: Fur Collars, Tapestry, Deep Reds & Velvet",
   description: "Affordable secondhand finds inspired by my Pinterest this season: fur collars, tapestry jackets, deep reds and velvet. A lot of what's trending was already in style in earlier eras, so the originals are sitting on eBay, Poshmark and vintage sites in better materials and for better prices. Take what resonates and leave the rest.",
